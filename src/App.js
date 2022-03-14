@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import CustomizedInputBase from './MyInput'
 
 import MyPieChart from './MyPieChart'
@@ -79,15 +80,14 @@ function FirstFoods() {
   }
 
   return(
-    <>
-    <MyPieChart />
     <Box sx={{width: '100%'}}>
-      <Box sx={{m: 2}}>
-        <CustomizedInputBase />
+      <Box sx={{width: '100%'}}>
+        <Box sx={{m: 2}}>
+          <CustomizedInputBase />
+        </Box>
       </Box>
+      <FolderList foods={foods} handleClick={handleClick} />
     </Box>
-    <FolderList foods={foods} handleClick={handleClick} />
-    </>
   )
 }
 
@@ -109,10 +109,13 @@ function SecondFoods(){
     </li>
   );
   return (
-    <div>
-      {food1[0]}, {food1[3]}, {food1[6]}, {food1[4]}, {food1[5]}
+    <Box>
+      <Typography variant='h5'>
+        {food1[0]}
+      </Typography>
+      <MyPieChart food={food1}/>
       <FolderList foods={foods2} handleClick={handleClick} />
-    </div>
+    </Box>
   );
 }
 
@@ -128,11 +131,12 @@ function Result(){
   const per3 = per(sum[3], sum[6], sum[4], sum[5])
 
   return(
-    <div>
+    <Box>
+    <MyPieChart food={sum} />
       {food1[0]}, {food1[3]}, {food1[6]}({per1[0]}), {food1[4]}({per1[1]}), {food1[5]}({per1[2]})<br />
       {food2[0]}, {food2[3]}, {food2[6]}({per2[0]}), {food2[4]}({per2[1]}), {food2[5]}({per2[2]})<br />
       {sum[0]}, {sum[3]}, {sum[6]}({per3[0]}), {sum[4]}({per3[1]}), {sum[5]}({per3[2]})<br />
-    </div>
+    </Box>
   )
 }
 

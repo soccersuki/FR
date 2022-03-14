@@ -31,8 +31,6 @@ export default function FolderList(props) {
   );
   return (
     <>
-
-
       <List sx={{ width: '100%', maxWidth: 500, bgcolor: 'background.paper' }}>
         {listItems}
       </List>

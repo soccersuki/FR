@@ -1,6 +1,6 @@
 // import "./styles.css";
 import React from "react";
-import { PieChart, Pie, Sector, Cell, Label } from "recharts";
+import { PieChart, Pie, Sector, Cell, Label, ResponsiveContainer, LabelList, } from "recharts";
 
 const data = [
   { name: "Group A", value: 400 },
@@ -10,26 +10,32 @@ const data = [
 ];
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-export default function MyPieChart() {
+export default function MyPieChart(props) {
+  const data2 = [
+    { name: "Group A", value: props.food[6] },
+    { name: "Group B", value: props.food[4] },
+    { name: "Group C", value: props.food[5] },
+  ];
   return (
-    <PieChart width={800} height={400}>
-      <Pie
-        data={data}
-        cx={120}
-        cy={200}
-        innerRadius={60}
-        outerRadius={80}
-        fill="#8884d8"
-        paddingAngle={5}
-        dataKey="value"
-      >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-        <Label width={30} position="center">
-          hello
-        </Label>
-      </Pie>
-    </PieChart>
+    <ResponsiveContainer width='100%' aspect={1}>
+      <PieChart>
+        <Pie
+          data={data2}
+          innerRadius='80%'
+          outerRadius='100%'
+          fill="#8884d8"
+          paddingAngle={5}
+          dataKey="value"
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+          <Label width={30} position="center">
+            {props.food[3]}kcal
+          </Label>
+          <LabelList dataKey="value" position="inside" fill='white'/>
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
   );
 }
