@@ -43,7 +43,7 @@ foods = foods.filter((food) => {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path='/' element={<FirstFoods />} />
         <Route path='/second' element={<SecondFoods />} />
