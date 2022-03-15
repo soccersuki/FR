@@ -34,7 +34,7 @@ export default function FolderList(props) {
     >
       <ListItemAvatar>
         <Avatar sx={{ bgcolor: pink[500] }}>
-          <ImageIcon />
+          {food[0][0]}
         </Avatar>
       </ListItemAvatar>
       <ListItemText primary={food[0]} secondary={`${String(food[3])}kcal`} />
