@@ -10,24 +10,37 @@ import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Divider from '@mui/material/Divider';
 
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 
+import {IconButton} from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
+import { green, pink } from '@mui/material/colors';
 
 
 export default function FolderList(props) {
   const {foods} = props
-  const listItems = foods.slice(0, 10).map((food, i) =>
-    <ListItem onClick={() => props.handleClick(i)}>
+  const listItems = foods.slice(0, 20).map((food, i) =>
+    <>
+    <ListItem onClick={() => props.handleClick(i)}
+      secondaryAction={
+        <IconButton edge="end">
+          <ArrowForwardIosIcon />
+        </IconButton>
+      }
+    >
       <ListItemAvatar>
-        <Avatar>
+        <Avatar sx={{ bgcolor: pink[500] }}>
           <ImageIcon />
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={food[0]} secondary={`カロリー: ${String(food[3])}kcal | たんぱく質: ${String(food[6])}g | 脂質: ${String(food[4])}g | 炭水化物: ${String(food[5])}g`} />
+      <ListItemText primary={food[0]} secondary={`${String(food[3])}kcal`} />
     </ListItem>
+    <Divider variant='middle' component="li" />
+    </>
   );
   return (
     <>

@@ -17,8 +17,11 @@ import {
 } from "react-router-dom";
 
 import FolderList from './FolderList'
-
+import TitlebarImageList from './TitlebarImageList'
+import BasicButtons from './BasicButtons'
 import foods from './foods_lawson.json'
+
+
 
 const eI = [1600 / 3, 2250 / 3]
 const pI = [0.15, 0.25]
@@ -46,7 +49,8 @@ function App() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path='/' element={<FirstFoods />} />
+        <Route path='/' element={<Categories />} />
+        <Route path='/first' element={<FirstFoods />} />
         <Route path='/second' element={<SecondFoods />} />
         <Route path='/result' element={<Result />} />
       </Routes>
@@ -54,6 +58,30 @@ function App() {
   );
 }
 
+function Categories(){
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/first')
+  }
+  return(
+    <Box sx={{width: '100%'}}>
+      <Top text='検索' />
+      <Box sx={{m: 2}}>
+        <CustomizedInputBase />
+        <TitlebarImageList handleClick={handleClick}/>
+      </Box>
+    </Box>
+  )
+}
+
+function Top(props){
+  return(
+    <Box sx={{ m: 2 }}>
+      <Typography variant='h4'><b>{props.text}</b></Typography>
+    </Box>
+  )
+}
 
 
 function FirstFoods() {
@@ -81,11 +109,8 @@ function FirstFoods() {
 
   return(
     <Box sx={{width: '100%'}}>
-      <Box sx={{width: '100%'}}>
-        <Box sx={{m: 2}}>
-          <CustomizedInputBase />
-        </Box>
-      </Box>
+      <Top text='ローソン 肉' />
+      <BasicButtons />
       <FolderList foods={foods} handleClick={handleClick} />
     </Box>
   )
@@ -110,9 +135,7 @@ function SecondFoods(){
   );
   return (
     <Box>
-      <Typography variant='h5'>
-        {food1[0]}
-      </Typography>
+      <Top text={food1[0]} />
       <MyPieChart food={food1}/>
       <FolderList foods={foods2} handleClick={handleClick} />
     </Box>
