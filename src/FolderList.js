@@ -15,7 +15,7 @@ import Divider from '@mui/material/Divider';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 
-import {IconButton} from '@mui/material'
+import {IconButton, ListItemButton, } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import { green, pink } from '@mui/material/colors';
@@ -23,7 +23,7 @@ import { green, pink } from '@mui/material/colors';
 
 export default function FolderList(props) {
   const {foods} = props
-  const listItems = foods.slice(0, 20).map((food, i) =>
+  const listItems = foods?.slice(0, 20).map((food, i) =>
     <>
     <ListItem onClick={() => props.handleClick(i)}
       secondaryAction={
@@ -31,20 +31,24 @@ export default function FolderList(props) {
           <ArrowForwardIosIcon />
         </IconButton>
       }
+      divider
+      disablePadding
+      disableGutters
     >
+      <ListItemButton disableGutters>
       <ListItemAvatar>
-        <Avatar sx={{ bgcolor: pink[500] }}>
+        <Avatar sx={{ bgcolor: pink[500] }} variant='rounded'>
           {food[0][0]}
         </Avatar>
       </ListItemAvatar>
       <ListItemText primary={food[0]} secondary={`${String(food[3])}kcal`} />
+      </ListItemButton>
     </ListItem>
-    <Divider variant='middle' component="li" />
     </>
   );
   return (
     <>
-      <List sx={{ width: '100%', maxWidth: 500, bgcolor: 'background.paper' }}>
+      <List dense sx={{ width: '100%', maxWidth: 500, bgcolor: 'background.paper' }}>
         {listItems}
       </List>
     </>

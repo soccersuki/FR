@@ -16,6 +16,8 @@ import {
   useLocation
 } from "react-router-dom";
 
+
+
 import FolderList from './FolderList'
 import TitlebarImageList from './TitlebarImageList'
 import BasicButtons from './BasicButtons'
@@ -110,8 +112,10 @@ function FirstFoods() {
   return(
     <Box sx={{width: '100%'}}>
       <Top text='ローソン 肉' />
+      <Box sx={{mx: 2}}>
       <BasicButtons />
       <FolderList foods={foods} handleClick={handleClick} />
+      </Box>
     </Box>
   )
 }
@@ -120,24 +124,26 @@ function SecondFoods(){
   const navigate = useNavigate()
   const location = useLocation()
 
+  console.log(location)
+
   const {food1, foods2} = location.state
+
 
   const handleClick = (i) => {
     console.log('click')
     console.log(foods2[i])
     navigate('/result', {state: {food1: food1, food2: foods2[i]}})
   }
-
-  const listItems = foods2.map((food, i) =>
-    <li onClick={() => handleClick(i)}>
-      {food[0]}, {food[3]}, {food[6]}, {food[4]}, {food[5]}
-    </li>
-  );
   return (
-    <Box>
+    <Box sx={{width: '100%'}}>
       <Top text={food1[0]} />
+      <Box sx={{mx: 2}}>
+      <Box sx={{width: '50%'}}>
       <MyPieChart food={food1}/>
+      </Box>
+
       <FolderList foods={foods2} handleClick={handleClick} />
+      </Box>
     </Box>
   );
 }
@@ -155,10 +161,7 @@ function Result(){
 
   return(
     <Box>
-    <MyPieChart food={sum} />
-      {food1[0]}, {food1[3]}, {food1[6]}({per1[0]}), {food1[4]}({per1[1]}), {food1[5]}({per1[2]})<br />
-      {food2[0]}, {food2[3]}, {food2[6]}({per2[0]}), {food2[4]}({per2[1]}), {food2[5]}({per2[2]})<br />
-      {sum[0]}, {sum[3]}, {sum[6]}({per3[0]}), {sum[4]}({per3[1]}), {sum[5]}({per3[2]})<br />
+      <MyPieChart food={sum} />
     </Box>
   )
 }
