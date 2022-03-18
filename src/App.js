@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import CustomizedInputBase from './MyInput'
 
 import MyPieChart from './MyPieChart'
+import DirectionStack from './DirectionStack'
 
 import {
   BrowserRouter,
@@ -138,11 +139,12 @@ function SecondFoods(){
     <Box sx={{width: '100%'}}>
       <Top text={food1[0]} />
       <Box sx={{mx: 2}}>
-      <Box sx={{width: '50%'}}>
-      <MyPieChart food={food1}/>
-      </Box>
-
-      <FolderList foods={foods2} handleClick={handleClick} />
+        <Box sx={{mx: 'auto', width: '80%'}}>
+          <MyPieChart food={food1}/>
+        </Box>
+        <DirectionStack />
+        <Typography variant='h6' sx={{mt: 3}}><b>おすすめ</b></Typography>
+        <FolderList foods={foods2} handleClick={handleClick} />
       </Box>
     </Box>
   );

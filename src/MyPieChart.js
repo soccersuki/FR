@@ -18,7 +18,7 @@ export default function MyPieChart(props) {
   ];
   return (
     <ResponsiveContainer width='100%' aspect={1}>
-      <PieChart margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
+      <PieChart margin={{ top: 50, right: 50, bottom: 50, left: 50 }}>
         <Pie
           data={data2}
           innerRadius='80%'
@@ -31,8 +31,8 @@ export default function MyPieChart(props) {
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
-          <Label width={30} position="center">
-            {props.food[3]}kcal
+          <Label position="center" fontSize='30px' fill="grey">
+            {`${props.food[3]}kcal`}
           </Label>
         </Pie>
       </PieChart>
