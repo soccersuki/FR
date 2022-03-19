@@ -15,6 +15,7 @@ import {
   useLocation
 } from "react-router-dom";
 
+import { pink } from '@mui/material/colors';
 
 
 import FolderList from './FolderList'
@@ -23,6 +24,8 @@ import BasicButtons from './BasicButtons'
 import foods from './foods_lawson.json'
 
 import './background.css'
+
+import {Stack} from '@mui/material'
 
 
 
@@ -137,17 +140,23 @@ function SecondFoods(){
   }
   return (
     <Box sx={{width: '100%'}}>
-      <Box className='background' sx={{py: 1}}>
-        <Box sx={{mx: 2}}>
-          <Box sx={{mx: 'auto', width: '80%'}}>
+      <Box>
+        <Box sx={{p: 2}}>
+        <Typography variant='h4'><b>{food1[0]}</b></Typography>
+          <Stack direction='row'alignItems="center">
+          <Box sx={{width: '50%'}}>
             <MyPieChart food={food1}/>
           </Box>
-          <Typography align='center' sx={{mt: 10, mb: 2}}><b>{food1[0]}</b></Typography>
+          <Box>
           <DirectionStack />
+          </Box>
+
+          </Stack>
+
         </Box>
       </Box>
       <Box sx={{mx: 2}}>
-        <Typography variant='h6' sx={{mt: 3}}><b>おすすめ</b></Typography>
+        <Typography variant='h6' sx={{}}><b>おすすめ</b></Typography>
         <FolderList foods={foods2} handleClick={handleClick} />
       </Box>
     </Box>

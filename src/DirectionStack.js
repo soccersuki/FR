@@ -1,13 +1,13 @@
 import Stack from '@mui/material/Stack';
 import {Box, Typography} from '@mui/material'
-import { grey } from '@mui/material/colors';
+// import { grey } from '@mui/material/colors';
 
 function Item(props){
   return(
     <Box>
-    <Typography variant='caption' display="block"align='center' sx={{color: props.color}}>{props.text}</Typography>
-    <Typography align='center'><b style={{fontSize: 30}}>120</b>g</Typography>
-    <Typography align='center'>20%</Typography>
+    <Typography display="block"align='center' sx={{color: props.color, fontSize:10}}>{props.text}</Typography>
+    <Typography align='center'><b style={{fontSize: 20}}>120</b>g</Typography>
+    <Typography align='center' sx={{fontSize:10}}>20%</Typography>
     </Box>
   )
 }
