@@ -1,0 +1,32 @@
+/* .background {
+    background:
+      linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, transparent);
+
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+} */
+
+.background{
+  background-color:#FFF8DC;background-image:  
+  radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0, transparent 50%),
+  radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0, transparent 50%),
+  radial-gradient(at 0% 33%, hsla(355,85%,93%,1) 0, transparent 50%),
+  radial-gradient(at 80% 19%, hsla(340,100%,76%,1) 0, transparent 50%),
+  radial-gradient(at 1% 55%, hsla(22,100%,77%,1) 0, transparent 50%),
+  radial-gradient(at 81% 52%, hsla(242,100%,70%,1) 0, transparent 50%),
+  radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0, transparent 50%);
+background-size: 400% 100%;
+animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

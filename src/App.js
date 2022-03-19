@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import Box from '@mui/material/Box';
@@ -12,7 +11,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Link,
   useNavigate,
   useLocation
 } from "react-router-dom";
@@ -23,6 +21,8 @@ import FolderList from './FolderList'
 import TitlebarImageList from './TitlebarImageList'
 import BasicButtons from './BasicButtons'
 import foods from './foods_lawson.json'
+
+import './background.css'
 
 
 
@@ -137,12 +137,16 @@ function SecondFoods(){
   }
   return (
     <Box sx={{width: '100%'}}>
-      <Top text={food1[0]} />
-      <Box sx={{mx: 2}}>
-        <Box sx={{mx: 'auto', width: '80%'}}>
-          <MyPieChart food={food1}/>
+      <Box className='background' sx={{py: 1}}>
+        <Box sx={{mx: 2}}>
+          <Box sx={{mx: 'auto', width: '80%'}}>
+            <MyPieChart food={food1}/>
+          </Box>
+          <Typography align='center' sx={{mt: 10, mb: 2}}><b>{food1[0]}</b></Typography>
+          <DirectionStack />
         </Box>
-        <DirectionStack />
+      </Box>
+      <Box sx={{mx: 2}}>
         <Typography variant='h6' sx={{mt: 3}}><b>おすすめ</b></Typography>
         <FolderList foods={foods2} handleClick={handleClick} />
       </Box>
@@ -155,11 +159,11 @@ function Result(){
 
   const {food1, food2} = location.state
 
-  const sum = ['合計', , , food1[3] + food2[3], food1[4] + food2[4], food1[5] + food2[5], food1[6] + food2[6]]
+  const sum = ['合計', null, null, food1[3] + food2[3], food1[4] + food2[4], food1[5] + food2[5], food1[6] + food2[6]]
 
-  const per1 = per(food1[3], food1[6], food1[4], food1[5])
-  const per2 = per(food2[3], food2[6], food2[4], food2[5])
-  const per3 = per(sum[3], sum[6], sum[4], sum[5])
+  // const per1 = per(food1[3], food1[6], food1[4], food1[5])
+  // const per2 = per(food2[3], food2[6], food2[4], food2[5])
+  // const per3 = per(sum[3], sum[6], sum[4], sum[5])
 
   return(
     <Box>
@@ -168,9 +172,9 @@ function Result(){
   )
 }
 
-function per(e, p, f, c){
-  return [Math.round(p * 4 / e * 100), Math.round(f * 9 / e * 100), Math.round(c * 4 / e * 100)]
-}
+// function per(e, p, f, c){
+//   return [Math.round(p * 4 / e * 100), Math.round(f * 9 / e * 100), Math.round(c * 4 / e * 100)]
+// }
 
 
 export default App;

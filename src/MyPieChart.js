@@ -31,7 +31,7 @@ export default function MyPieChart(props) {
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
-          <Label position="center" fontSize='30px' fill="grey">
+          <Label position="center" fill="grey">
             {`${props.food[3]}kcal`}
           </Label>
         </Pie>

@@ -6,8 +6,8 @@ function Item(props){
   return(
     <Box>
     <Typography variant='caption' display="block"align='center' sx={{color: props.color}}>{props.text}</Typography>
-    <Typography align='center' sx={{color: grey[500]}}><b style={{fontSize: 30}}>120</b>g</Typography>
-    <Typography align='center' sx={{color: grey[500]}}>20%</Typography>
+    <Typography align='center'><b style={{fontSize: 30}}>120</b>g</Typography>
+    <Typography align='center'>20%</Typography>
     </Box>
   )
 }
