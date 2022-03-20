@@ -25,7 +25,7 @@ import foods from './foods_lawson.json'
 
 import './background.css'
 
-import {Stack} from '@mui/material'
+import {Stack, Divider, } from '@mui/material'
 
 
 
@@ -141,19 +141,19 @@ function SecondFoods(){
   return (
     <Box sx={{width: '100%'}}>
       <Box>
-        <Box sx={{p: 2}}>
-        <Typography variant='h4'><b>{food1[0]}</b></Typography>
+        <Box sx={{m: 2}}>
+          <Typography variant='h4'><b>{food1[0]}</b></Typography>
           <Stack direction='row'alignItems="center">
-          <Box sx={{width: '50%'}}>
-            <MyPieChart food={food1}/>
-          </Box>
-          <Box>
-          <DirectionStack />
-          </Box>
-
+            <Box sx={{width: '50%'}}>
+              <MyPieChart food={food1}/>
+            </Box>
+            <Box>
+              <DirectionStack />
+            </Box>
           </Stack>
-
+          <Divider />
         </Box>
+
       </Box>
       <Box sx={{mx: 2}}>
         <Typography variant='h6' sx={{}}><b>おすすめ</b></Typography>
@@ -175,8 +175,15 @@ function Result(){
   // const per3 = per(sum[3], sum[6], sum[4], sum[5])
 
   return(
-    <Box>
+    <Box sx={{m: 2}}>
+      <Typography variant='h4'><b>合計</b></Typography>
       <MyPieChart food={sum} />
+      <Typography align='center' variant='h6'><b>{food1[0]}</b></Typography>
+      <Typography align='center'>&</Typography>
+      <Typography align='center' variant='h6'><b>{food2[0]}</b></Typography>
+      <Box sx={{my: 2}}>
+      <DirectionStack />
+      </Box>
     </Box>
   )
 }
