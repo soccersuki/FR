@@ -15,8 +15,6 @@ import {
   useLocation
 } from "react-router-dom";
 
-import { pink } from '@mui/material/colors';
-
 
 import FolderList from './FolderList'
 import TitlebarImageList from './TitlebarImageList'
@@ -74,7 +72,9 @@ function Categories(){
     <Box sx={{width: '100%'}}>
       <Top text='検索' />
       <Box sx={{m: 2}}>
-        <CustomizedInputBase />
+        <Box sx={{mb: 2}}><CustomizedInputBase /></Box>
+        <Divider />
+        <Typography sx={{mt: 1}}><b>カテゴリを検索</b></Typography>
         <TitlebarImageList handleClick={handleClick}/>
       </Box>
     </Box>

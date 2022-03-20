@@ -8,10 +8,7 @@ import InfoIcon from '@mui/icons-material/Info';
 
 export default function TitlebarImageList(props) {
   return (
-    <ImageList sx={{ width: '100%' }} gap={8}>
-      <ImageListItem key="Subheader" cols={2}>
-        <ListSubheader component="div">カテゴリ</ListSubheader>
-      </ImageListItem>
+    <ImageList sx={{ width: '100%', my: 1}} gap={8}>
       {itemData.map((item) => (
         <ImageListItem key={item.img} onClick={props.handleClick}>
           <img
@@ -19,7 +16,7 @@ export default function TitlebarImageList(props) {
             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
             alt={item.title}
             loading="lazy"
-            style={{borderRadius: 30}}
+            style={{borderRadius: 10}}
           />
           <ImageListItemBar
             title={item.title}

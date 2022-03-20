@@ -10,9 +10,8 @@ import { grey, pink } from '@mui/material/colors';
 export default function BasicButtons() {
   return (
     <Stack spacing={2} direction="row" justifyContent="space-between">
-      <Button variant="contained" startIcon={<ShuffleIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[300], color: pink[500], borderRadius: '10px'}}  size="large">ランダム</Button>
-      <Button variant="contained" startIcon={<SortIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[300], color: pink[500], borderRadius: '10px'}}  size="large">並び替え</Button>
+      <Button variant="contained" startIcon={<ShuffleIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[200], color: pink[500], borderRadius: '10px'}}  size="large"><b>ランダム</b></Button>
+      <Button variant="contained" startIcon={<SortIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[200], color: pink[500], borderRadius: '10px'}}  size="large"><b>並び替え</b></Button>
     </Stack>
-
   );
 }
