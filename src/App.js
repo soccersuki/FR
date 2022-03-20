@@ -2,7 +2,7 @@ import './App.css';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import CustomizedInputBase from './MyInput'
+import MyInput from './MyInput'
 
 import MyPieChart from './MyPieChart'
 import DirectionStack from './DirectionStack'
@@ -21,11 +21,13 @@ import TitlebarImageList from './TitlebarImageList'
 import BasicButtons from './BasicButtons'
 import foods from './foods_lawson.json'
 
-import './background.css'
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 
-import {Stack, Divider, } from '@mui/material'
+import {Stack, Divider, Button, Grid} from '@mui/material'
 
+import {useState, } from 'react'
 
+import {pink} from '@mui/material/colors'
 
 const eI = [1600 / 3, 2250 / 3]
 const pI = [0.15, 0.25]
@@ -53,7 +55,8 @@ function App() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path='/' element={<Categories />} />
+        <Route path='/' element={<Initialize />}/>
+        <Route path='/search' element={<Categories />} />
         <Route path='/first' element={<FirstFoods />} />
         <Route path='/second' element={<SecondFoods />} />
         <Route path='/result' element={<Result />} />
@@ -62,17 +65,61 @@ function App() {
   );
 }
 
+function Initialize(){
+  const [num, setNum] = useState(0)
+  const handleClick = () => {
+    setNum(num + 1)
+  }
+  const pages = [
+    (
+      <Box sx={{height: '100%', alignContent: 'center', display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+        <LocalFireDepartmentIcon sx={{fontSize: 300, color: pink[500]}}/>
+      </Box>
+    ),
+    (
+      <Stack justifyContent="flex-start" alignItems="center">
+        <LocalFireDepartmentIcon />
+        <Typography>まずは</Typography>
+      </Stack>
+    )
+  ]
+  return (
+    <Box sx={{height: window.innerHeight}}>
+      <Box sx={{height: '100%'}}>
+        <Box sx={{height: '80%'}}>
+          {pages[num]}
+        </Box>
+        <Box sx={{height: '20%', alignContent: 'center', display: 'flex', justifyContent: 'center'}}>
+          <Button onClick={handleClick}>button</Button>
+        </Box>
+      </Box>
+    </Box>
+  )
+}
+
+
 function Categories(){
   const navigate = useNavigate()
 
+  const handleSubmit = (text) => {
+    console.log(text)
+
+    const foods1 = foods.filter((food) => {
+      return food[0].includes(text)
+    })
+    console.log(foods1)
+
+    navigate('/first', {state: {foods1: foods1}})
+  }
+
   const handleClick = () => {
-    navigate('/first')
+    navigate('/first', {state: {foods1: foods}})
   }
   return(
     <Box sx={{width: '100%'}}>
       <Top text='検索' />
       <Box sx={{m: 2}}>
-        <Box sx={{mb: 2}}><CustomizedInputBase /></Box>
+        <Box sx={{mb: 2}}><MyInput handleSubmit={handleSubmit}/></Box>
         <Divider />
         <Typography sx={{mt: 1}}><b>カテゴリを検索</b></Typography>
         <TitlebarImageList handleClick={handleClick}/>
@@ -92,9 +139,15 @@ function Top(props){
 
 function FirstFoods() {
   const navigate = useNavigate()
+  const location = useLocation()
+
+  // const {foods1} = location.state
+  const [foods1, setFoods1] = useState(location.state.foods1)
+
+
 
   const handleClick = (i) => {
-    const food1 = foods[i]
+    const food1 = foods1[i]
     const [,,,e, f, c, p] = food1
 
     const foods2 = foods.filter((food) => {
@@ -108,17 +161,42 @@ function FirstFoods() {
       return ok
     })
 
-    console.log(foods2)
+    navigate('/second', {state: {food1: food1, foods2: foods2}})
+  }
+
+  const handleClick1 = () => {
+    const food1 = foods1[Math.floor(Math.random() * foods1.length)]
+
+    const [,,,e, f, c, p] = food1
+
+    const foods2 = foods.filter((food) => {
+      const [,,,e2, f2, c2, p2] = food
+
+      var ok = e + e2 > eI[0] && e + e2 < eI[1]
+      ok = ok && p + p2 > (e + e2) * pI[0] / 4 && p + p2 < (e + e2) * pI[1] / 4
+      ok = ok && f + f2 > (e + e2) * fI[0] / 9 && f + f2 < (e + e2) * fI[1] / 9
+      ok = ok && c + c2 > (e + e2) * cI[0] / 4 && c + c2 < (e + e2) * cI[1] / 4
+
+      return ok
+    })
 
     navigate('/second', {state: {food1: food1, foods2: foods2}})
+
+  }
+
+  const handleClick2 = (id) => {
+    console.log(id)
+    if(id == 0) foods1.sort((a, b) => b[3] - a[3])
+    else if(id == 1) foods1.sort((a, b) => a[3] - b[3])
+    setFoods1([...foods1])
   }
 
   return(
     <Box sx={{width: '100%'}}>
       <Top text='ローソン 肉' />
       <Box sx={{mx: 2}}>
-      <BasicButtons />
-      <FolderList foods={foods} handleClick={handleClick} />
+        <BasicButtons handleClick1={handleClick1} handleClick2={handleClick2} />
+        <FolderList foods={foods1} handleClick={handleClick} />
       </Box>
     </Box>
   )
@@ -127,8 +205,6 @@ function FirstFoods() {
 function SecondFoods(){
   const navigate = useNavigate()
   const location = useLocation()
-
-  console.log(location)
 
   const {food1, foods2} = location.state
 
