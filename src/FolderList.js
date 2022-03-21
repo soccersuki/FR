@@ -37,7 +37,7 @@ export default function FolderList(props) {
     >
       <ListItemButton disableGutters>
       <ListItemAvatar>
-        <Avatar sx={{ bgcolor: pink[500] }} variant='rounded'>
+        <Avatar sx={{ bgcolor: green[300] }} variant='rounded'>
           {food[0][0]}
         </Avatar>
       </ListItemAvatar>
