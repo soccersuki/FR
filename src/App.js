@@ -20,14 +20,27 @@ import FolderList from './FolderList'
 import TitlebarImageList from './TitlebarImageList'
 import BasicButtons from './BasicButtons'
 import foods from './foods_lawson.json'
+import ProgressMobileStepper from './ProgressMobileStepper'
 
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 
-import {Stack, Divider, Button, Grid} from '@mui/material'
+import {Stack, Divider, Button, Grid, Paper, TextField, Fab, Input, InputBase, InputAdornment} from '@mui/material'
 
 import {useState, } from 'react'
 
 import {pink} from '@mui/material/colors'
+
+import { CookiesProvider, useCookies } from 'react-cookie';
+
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    secondary: {
+      main: pink[200]
+    }
+  }
+})
 
 const eI = [1600 / 3, 2250 / 3]
 const pI = [0.15, 0.25]
@@ -53,45 +66,115 @@ foods = foods.filter((food) => {
 
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Routes>
-        <Route path='/' element={<Initialize />}/>
-        <Route path='/search' element={<Categories />} />
-        <Route path='/first' element={<FirstFoods />} />
-        <Route path='/second' element={<SecondFoods />} />
-        <Route path='/result' element={<Result />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+    <CookiesProvider>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <Routes>
+          <Route path='/' element={<Initialize />}/>
+          <Route path='/test' element={<Test />}/>
+          <Route path='/search' element={<Categories />} />
+          <Route path='/first' element={<FirstFoods />} />
+          <Route path='/second' element={<SecondFoods />} />
+          <Route path='/result' element={<Result />} />
+        </Routes>
+      </BrowserRouter>
+    </CookiesProvider>
+    </ThemeProvider>
   );
 }
 
+function Test(){
+  const [cookies, setCookie] = useCookies(['name']);
+
+  function onChange(newName) {
+    setCookie('name', newName, { path: '/' });
+    console.log()
+  }
+
+  return (
+    <div>
+      <TextField onChange={(e) => onChange(e.target.value)} />
+      {cookies.name && <h1>Hello {cookies.name}!</h1>}
+    </div>
+  );
+}
+
+
+
 function Initialize(){
   const [num, setNum] = useState(0)
+  const [activeStep, setActiveStep] = useState(0);
   const handleClick = () => {
-    setNum(num + 1)
+    setActiveStep(activeStep + 1)
   }
-  const pages = [
-    (
-      <Box sx={{height: '100%', alignContent: 'center', display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-        <LocalFireDepartmentIcon sx={{fontSize: 300, color: pink[500]}}/>
-      </Box>
-    ),
-    (
-      <Stack justifyContent="flex-start" alignItems="center">
-        <LocalFireDepartmentIcon />
-        <Typography>まずは</Typography>
+
+  const handleBack = () => {
+    setActiveStep(activeStep - 1)
+  }
+
+  const buttons = (
+    <Stack spacing={2} sx={{width: '100%'}}>
+      <Stack direction="row" spacing={2} sx={{width: '100%'}} justifyContent="center" alignItems="center">
+        <Button onClick={handleClick} variant="outlined" sx={{width: '30%', aspectRatio: '1', borderRadius: 10}}>
+          <Stack>
+            <LocalFireDepartmentIcon sx={{fontSize: 40}}/>
+            <Typography>item</Typography>
+          </Stack>
+        </Button>
+        <Button variant="outlined" sx={{width: '30%', aspectRatio: '1', borderRadius: 10}}>
+          <Stack>
+            <LocalFireDepartmentIcon sx={{fontSize: 40}}/>
+            <Typography>item</Typography>
+          </Stack>
+        </Button>
       </Stack>
-    )
+      <Stack direction="row" spacing={2} sx={{width: '100%'}} justifyContent="center" alignItems="center">
+        <Button variant="outlined" sx={{width: '30%', aspectRatio: '1', borderRadius: 10}}>
+          <Stack>
+            <LocalFireDepartmentIcon sx={{fontSize: 40}}/>
+            <Typography>item</Typography>
+          </Stack>
+        </Button>
+        <Button variant="outlined" sx={{width: '30%', aspectRatio: '1', borderRadius: 10}}>
+          <Stack>
+            <LocalFireDepartmentIcon sx={{fontSize: 40}}/>
+            <Typography>item</Typography>
+          </Stack>
+        </Button>
+      </Stack>
+    </Stack>
+  )
+
+  const pages = [
+    buttons,
+    <>
+    <InputBase placeholder='0' type='number'inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', style: { textAlign: 'center' } }} sx={{fontSize: 40, width: '20%'}}/>
+    <Typography>cm</Typography>
+    </>
   ]
   return (
     <Box sx={{height: window.innerHeight}}>
       <Box sx={{height: '100%'}}>
         <Box sx={{height: '80%'}}>
-          {pages[num]}
+          {activeStep == 0 ?
+            <Box sx={{height: '100%', alignContent: 'center', display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+              <LocalFireDepartmentIcon sx={{fontSize: 300, color: pink[500]}}/>
+            </Box>
+            :
+            <Stack justifyContent="flex-start" alignItems="center">
+              <ProgressMobileStepper sx={{my: 2}} activeStep={activeStep}/>
+              <LocalFireDepartmentIcon sx={{fontSize: 50, my: 2}}/>
+              <Typography sx={{my: 2}}>まずは</Typography>
+              {pages[activeStep-1]}
+            </Stack>
+          }
         </Box>
-        <Box sx={{height: '20%', alignContent: 'center', display: 'flex', justifyContent: 'center'}}>
-          <Button onClick={handleClick}>button</Button>
-        </Box>
+        {activeStep == 0 &&
+          <Box sx={{height: '20%', alignContent: 'center', display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+            <Fab color='secondary' variant='extended' onClick={handleClick} sx={{width: '60%'}}><Typography sx={{color: 'white'}}>次へ</Typography></Fab>
+          </Box>
+        }
+
       </Box>
     </Box>
   )
