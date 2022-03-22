@@ -37,7 +37,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     secondary: {
-      main: pink[200]
+      main: pink[200],
+      contrastText: '#fff'
     }
   }
 })
@@ -70,7 +71,8 @@ function App() {
       <CookiesProvider>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
-            <Route path='/' element={<Initialize />}/>
+            <Route path='/' element={<Goal />}/>
+            <Route path='/init' element={<Initialize />}/>
             <Route path='/test' element={<Test />}/>
             <Route path='/search' element={<Categories />} />
             <Route path='/first' element={<FirstFoods />} />
@@ -81,6 +83,68 @@ function App() {
       </CookiesProvider>
     </ThemeProvider>
   );
+}
+
+function Goal(){
+  const navigate = useNavigate()
+  const goals = ['ダイエット', '筋トレ', '特になし']
+  const [goalId, setGoalId] = useState(0);
+  const handleClick = () => {
+    console.log(goalId)
+    navigate('/search')
+  }
+  const handleClickGoal = (id) => {
+    console.log(id)
+    setGoalId(id);
+  }
+  const pfcs = [
+    [{name: 'たんぱく質', value: 15}, {name: '脂質', value: 25}, {name: '炭水化物', value: 60}],
+    [{name: 'たんぱく質', value: 20}, {name: '脂質', value: 20}, {name: '炭水化物', value: 60}],
+    [{name: 'たんぱく質', value: 30}, {name: '脂質', value: 20}, {name: '炭水化物', value: 50}],
+  ]
+  const es = [800, 600, 900]
+
+  return(
+    <Box sx={{ height: window.innerHeight, p: 2, boxSizing: 'border-box' }}>
+      <Stack justifyContent="space-between" sx={{height: '100%'}}>
+      <Box>
+        <Typography variant='h4'><b>目標</b></Typography>
+        <Stack spacing={3} justifyContent='center' alignItems="center" sx={{mt: 10, mb: 5}}>
+          {goals.map((goal, id) => {
+            return(
+              <Button onClick={() => handleClickGoal(id)} variant={id == goalId ? 'contained' : 'outlined'} color='secondary' sx={{borderRadius: 10, width: '80%', height: 60}}><b>{goal}</b></Button>
+            )
+          })}
+        </Stack>
+        <Stack spacing={2} justifyContent='center' alignItems="center">
+          <Stack justifyContent='center' alignItems="center">
+            <Typography fontSize={13}>摂取カロリー</Typography>
+            <Stack direction='row' spacing={1} justifyContent='center' alignItems="center">
+              <LocalFireDepartmentIcon />
+              <Typography fontSize={30}>{es[goalId]}</Typography>
+              <Typography>kcal</Typography>
+            </Stack>
+          </Stack>
+          <Stack direction='row' spacing={2}>
+          {pfcs[goalId].map((pfc, id) => {
+            return(
+              <Stack justifyContent='center' alignItems="center">
+                <Typography fontSize={13}>{pfc.name}</Typography>
+                <Typography><b style={{ fontSize: 20}}>{pfc.value}</b>%</Typography>
+              </Stack>
+            )
+          })}
+          </Stack>
+        </Stack>
+      </Box>
+      <Box sx={{width: '100%', textAlign: 'center'}}>
+        <Fab color='secondary' variant='extended' onClick={handleClick} sx={{width: '80%'}} disabled={goalId == -1}>
+          <Typography sx={{color: 'white'}}>次へ</Typography>
+        </Fab>
+      </Box>
+      </Stack>
+    </Box>
+  )
 }
 
 function Test(){
