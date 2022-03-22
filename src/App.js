@@ -12,7 +12,8 @@ import {
   Routes,
   Route,
   useNavigate,
-  useLocation
+  useLocation,
+  HashRouter,
 } from "react-router-dom";
 
 
@@ -69,7 +70,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CookiesProvider>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter>
           <Routes>
             <Route path='/' element={<Goal />}/>
             <Route path='/rests' element={<Rests />} />
@@ -78,7 +79,7 @@ function App() {
             <Route path='/second' element={<SecondFoods />} />
             <Route path='/result' element={<Result />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </CookiesProvider>
     </ThemeProvider>
   );
