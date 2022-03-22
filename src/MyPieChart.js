@@ -12,9 +12,9 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 export default function MyPieChart(props) {
   const data2 = [
-    { name: "Group A", value: props.food[6] },
-    { name: "Group B", value: props.food[4] },
-    { name: "Group C", value: props.food[5] },
+    { name: "Group A", value: Math.floor(props.food[6] * 4)},
+    { name: "Group B", value: Math.floor(props.food[4] * 9)},
+    { name: "Group C", value: Math.floor(props.food[5] * 4)},
   ];
   return (
     <ResponsiveContainer width='100%' aspect={1}>
