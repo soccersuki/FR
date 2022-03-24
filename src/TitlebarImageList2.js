@@ -8,21 +8,17 @@ import InfoIcon from '@mui/icons-material/Info';
 
 import itemData from './itemData'
 
-export default function TitlebarImageList(props) {
+export default function TitlebarImageList2(props) {
   return (
-    <ImageList sx={{ width: '100%', my: 1}} gap={8}>
+    <ImageList sx={{ width: '100%', my: 1}} gap={8} rowHeight={130}>
       {props.itemData.map((item, id) => (
         <ImageListItem key={item.img} onClick={() => props.handleClick(id)}>
           <img
-            src={`${item.img}?w=248&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            src={`${item.img}`}
+            srcSet={`${item.img}`}
             alt={item.title}
             loading="lazy"
-            style={{borderRadius: 10, aspectRatio: 1}}
-          />
-          <ImageListItemBar
-            title={item.title}
-            sx={{backgroundColor: 'transparent'}}
+            style={{borderRadius: 10, height: 100}}
           />
         </ImageListItem>
       ))}

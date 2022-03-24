@@ -16,9 +16,12 @@ import {
   HashRouter,
 } from "react-router-dom";
 
+import itemData from './itemData'
+import restData from './restData'
 
 import FolderList from './FolderList'
 import TitlebarImageList from './TitlebarImageList'
+import TitlebarImageList2 from './TitlebarImageList2'
 import BasicButtons from './BasicButtons'
 import foods from './foods_lawson.json'
 import ProgressMobileStepper from './ProgressMobileStepper'
@@ -156,7 +159,7 @@ function Rests(){
   return(
     <Box sx={{width: '100%', p: 2, boxSizing: 'border-box'}}>
       <Typography variant='h4'><b>店</b></Typography>
-      <TitlebarImageList handleClick={handleClick}/>
+      <TitlebarImageList2 handleClick={handleClick} itemData={restData}/>
     </Box>
   )
 }
@@ -185,7 +188,7 @@ function Categories(){
       <Box><MyInput handleSubmit={handleSubmit}/></Box>
       <Divider sx={{my: 2}}/>
       <Typography><b>カテゴリを検索</b></Typography>
-      <TitlebarImageList handleClick={handleClick}/>
+      <TitlebarImageList2 handleClick={handleClick} itemData={itemData} title/>
     </Box>
   )
 }
