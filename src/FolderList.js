@@ -18,7 +18,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import {IconButton, ListItemButton, } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-import { green, pink } from '@mui/material/colors';
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+
+
+import { pink } from '@mui/material/colors';
 
 
 export default function FolderList(props) {
@@ -37,8 +40,8 @@ export default function FolderList(props) {
     >
       <ListItemButton disableGutters>
       <ListItemAvatar>
-        <Avatar sx={{ bgcolor: green[300] }} variant='rounded'>
-          {food[0][0]}
+        <Avatar sx={{ bgcolor: pink[200] }}>
+          <LocalFireDepartmentIcon />
         </Avatar>
       </ListItemAvatar>
       <ListItemText primary={food[0]} secondary={`${String(food[3])}kcal`} />

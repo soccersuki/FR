@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import SortIcon from '@mui/icons-material/Sort';
-import { grey, pink, green } from '@mui/material/colors';
+import { grey, pink } from '@mui/material/colors';
 
 import {Menu, MenuItem, MenuList} from '@mui/material'
 
@@ -21,8 +21,8 @@ export default function BasicButtons(props) {
   };
   return (
     <Stack spacing={2} direction="row" justifyContent="space-between">
-      <Button onClick={props.handleClick1} variant="contained" startIcon={<ShuffleIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[200], color: green[800], borderRadius: '10px'}}  size="large"><b>ランダム</b></Button>
-      <Button onClick={handleClick} variant="contained" startIcon={<SortIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[200], color: green[800], borderRadius: '10px'}}  size="large"><b>並び替え</b></Button>
+      <Button onClick={props.handleClick1} variant="contained" startIcon={<ShuffleIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[200], color: pink[200], borderRadius: '10px'}}  size="large"><b>ランダム</b></Button>
+      <Button onClick={handleClick} variant="contained" startIcon={<SortIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[200], color: pink[200], borderRadius: '10px'}}  size="large"><b>並び替え</b></Button>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
