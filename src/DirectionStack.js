@@ -12,14 +12,14 @@ export default function DirectionStack(props) {
   const s = [{l: '不足', c: 'primary'}, {l: '過剰', c: 'error'}, {l: '適正', c: 'success'}]
   return (
     <Box sx={{width: '100%'}}>
-      <Stack direction="row" spacing={2} justifyContent="space-around">
+      <Stack direction="row" spacing={7} justifyContent="center">
         {pfc.map((nut, id) => {
           return(
-            <Stack spacing={0.5} justifyContent="center" alignItems="center">
-              <Typography display="block"align='center' sx={{color: nut.color, fontSize:10}}>{nut.name}</Typography>
-              <Typography align='center'><b style={{fontSize: 20}}>{nut.g}</b>g</Typography>
-              <Typography align='center' sx={{fontSize:10}}>{nut.p}%</Typography>
-              <Chip label={s[id].l} color={s[id].c}  size="small" sx={{fontSize: 10}}/>
+            <Stack spacing={1} justifyContent="center" alignItems="center">
+              <Typography display="block"align='center' sx={{color: nut.color, fontSize:15}}><b>{nut.name}</b></Typography>
+              <Typography align='center'><b style={{fontSize: 25}}>{nut.g}</b> g</Typography>
+              <Typography align='center' sx={{fontSize:15}}>{nut.p}%</Typography>
+              <Chip label={s[id].l} color={s[id].c}  sx={{fontSize: 15}}/>
             </Stack>
           )
         })}

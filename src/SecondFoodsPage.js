@@ -19,7 +19,7 @@ export default function SecondFoodsPage(){
     navigate('/result', {state: {food1: food1, food2: foods2[i]}})
   }
   return (
-    <Page text={'一品目を選んでください'} icon={<LocalFireDepartmentIcon sx={{fontSize: 50}}/>}>
+    <Page text={'二品目を選んでください'} icon={<LocalFireDepartmentIcon sx={{fontSize: 50}}/>}>
       <Box sx={{width: '100%', boxSizing: 'border-box', px: 2, mt: 2}}>
       <FolderList foods={foods2} handleClick={handleClick} />
       </Box>

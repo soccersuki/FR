@@ -18,20 +18,19 @@ export default function MyPieChart(props) {
   ];
   return (
     <ResponsiveContainer width='100%' aspect={1}>
-      <PieChart margin={{ top: 50, right: 50, bottom: 50, left: 50 }}>
+      <PieChart>
         <Pie
           data={data2}
-          innerRadius='80%'
+          innerRadius='70%'
           outerRadius='100%'
           fill="#8884d8"
           paddingAngle={5}
           dataKey="value"
-          label
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
-          <Label position="center" fill="grey" fontSize={50}>
+          <Label position="center" fill="grey" fontSize={20}>
             {`${props.food[3]}kcal`}
           </Label>
         </Pie>

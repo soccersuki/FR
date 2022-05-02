@@ -27,8 +27,8 @@ export default function ResultPage(){
       <Typography align='center'>&</Typography>
       <Typography align='center' variant='h6'><b>{food2[0]}</b></Typography>
 
-      <MyPieChart food={sum}/>
-      <DirectionStack food={sum}/>
+      <Box sx={{width: '30%', mt: 3}}><MyPieChart food={sum}/></Box>
+      <Box sx={{mt: 3}}><DirectionStack food={sum}/></Box>
     </Stack>
     <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
       <Fab color='secondary' variant='extended' onClick={handleClick} sx={{width: '80%'}}>

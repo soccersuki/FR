@@ -34,6 +34,9 @@ import { CookiesProvider, useCookies } from 'react-cookie';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+
+
+
 import CategoriesPage from './CategoriesPage'
 import StoresPage from './StoresPage'
 import GoalPage from './GoalPage'
@@ -77,6 +80,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CookiesProvider>
+        <ProgressMobileStepper />
         <HashRouter>
           <Routes>
             <Route path='/' element={<GoalPage />}/>

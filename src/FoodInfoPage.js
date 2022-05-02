@@ -1,10 +1,11 @@
 import {useNavigate, useLocation} from 'react-router-dom'
-import {Box, Typography, Stack, Fab} from '@mui/material'
+import {Box, Typography, Stack, Fab, IconButton, } from '@mui/material'
 import DirectionStack from './DirectionStack'
 import MyPieChart from './MyPieChart'
 
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function FoodInfoPage(props){
   const navigate = useNavigate()
@@ -21,13 +22,17 @@ export default function FoodInfoPage(props){
   return (
     <Box sx={{width: '100%', boxSizing: 'border-box'}}>
       <Stack alignItems='center'>
-        <LocalFireDepartmentIcon sx={{fontSize: 50, mt: 10}}/>
-        <Typography sx={{mt: 1}}>{food1[0]}</Typography>
-        <MyPieChart food={food1}/>
-        <DirectionStack food={food1}/>
+      <Stack direction='row' alignItems='center' justifyContent="flex-start" sx={{width: '100%'}}>
+      <IconButton>
+        <KeyboardArrowDownIcon fontSize='large'/>
+      </IconButton>
+      <Typography variant='h6'><b>{food1[0]}</b></Typography>
+      </Stack>
+        <Box sx={{width: '30%', mt: 4}}><MyPieChart food={food1}/></Box>
+        <Box sx={{mt: 4, width: '100%'}}><DirectionStack food={food1}/></Box>
       </Stack>
       <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
-        <Fab color='secondary' variant='extended' onClick={handleClick} sx={{width: '80%'}}>
+        <Fab color='secondary' variant='extended' onClick={props.handleClick} sx={{width: '80%'}}>
           <Typography sx={{color: 'white'}}>次へ</Typography>
         </Fab>
       </Box>

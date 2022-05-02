@@ -9,11 +9,13 @@ export default function Page(props){
         <Typography sx={{mt: 1}}>{props.text}</Typography>
         {props.children}
       </Stack>
-      <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
-        <Fab color='secondary' variant='extended' onClick={props.handleClick} sx={{width: '80%'}}>
-          <Typography sx={{color: 'white'}}>次へ</Typography>
-        </Fab>
-      </Box>
+      {props.handleClick &&
+        <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
+          <Fab color='secondary' variant='extended' onClick={props.handleClick} sx={{width: '80%'}}>
+            <Typography sx={{color: 'white'}}>次へ</Typography>
+          </Fab>
+        </Box>
+      }
     </Box>
   )
 }
