@@ -3,8 +3,10 @@ import {useNavigate, } from 'react-router-dom'
 import {Box, Stack, Typography, Button, Fab} from '@mui/material'
 
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-
+import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
 import Page from './Page'
+
+import {pink} from '@mui/material/colors'
 
 
 export default function GoalPage(){
@@ -26,7 +28,7 @@ export default function GoalPage(){
   const es = [800, 600, 900]
 
   return(
-    <Page text={'あなたの目標は?'} icon={<LocalFireDepartmentIcon  sx={{fontSize: 50}}/>} handleClick={handleClickNext}>
+    <Page text={'あなたの目標は?'} icon={<LocalFireDepartmentTwoToneIcon  sx={{fontSize: 70}} color="secondary"/>} handleClick={handleClickNext}>
       <Stack spacing={3} justifyContent='center' alignItems="center" sx={{mt: 5, width:'100%'}}>
         {goals.map((goal, i) => {
           return(

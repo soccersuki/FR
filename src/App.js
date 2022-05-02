@@ -28,7 +28,7 @@ import {Stack, Divider, Button, Grid, Paper, TextField, Fab, Input, InputBase, I
 
 import {useState, } from 'react'
 
-import {pink} from '@mui/material/colors'
+import {pink, grey} from '@mui/material/colors'
 
 import { CookiesProvider, useCookies } from 'react-cookie';
 
@@ -50,6 +50,12 @@ const theme = createTheme({
     secondary: {
       main: pink[200],
       contrastText: '#fff'
+    }
+  },
+  typography: {
+    body1: {
+      color: grey[700],
+      letterSpacing: 1,
     }
   }
 })
