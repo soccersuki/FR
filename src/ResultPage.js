@@ -10,6 +10,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawesome/free-solid-svg-icons'
 import {pink, blue, indigo, purple, cyan, orange, lime, grey} from '@mui/material/colors'
 
+import RocketLaunchTwoToneIcon from '@mui/icons-material/RocketLaunchTwoTone';
+import LocalConvenienceStoreTwoToneIcon from '@mui/icons-material/LocalConvenienceStoreTwoTone';
+
+import LooksOneTwoToneIcon from '@mui/icons-material/LooksOneTwoTone';
+import LooksTwoTwoToneIcon from '@mui/icons-material/LooksTwoTwoTone';
 
 export default function ResultPage(props){
   // const location = useLocation()
@@ -29,11 +34,19 @@ export default function ResultPage(props){
   return(
     <Box sx={{width: '100%', boxSizing: 'border-box'}}>
     <Stack alignItems='center'>
-      <CelebrationTwoToneIcon sx={{fontSize: 70, mt: 5}} color="secondary"/>
+      <CelebrationTwoToneIcon sx={{fontSize: 70, mt: 1}} color="secondary"/>
       <Stack sx={{mt: 3}} spacing={1} justifyContent="center">
-        <Typography align='center' fontSize={18}><b>{food1[0]}</b></Typography>
-        <Typography align='center'>&</Typography>
-        <Typography align='center' fontSize={18}><b>{food2[0]}</b></Typography>
+      <Stack direction="row" spacing={1}>
+      <LooksOneTwoToneIcon color="secondary"/>
+      <Typography align='center' fontSize={18}><b>{food1[0]}</b></Typography>
+      </Stack>
+      <Stack direction="row" spacing={1}>
+      <LooksTwoTwoToneIcon color="secondary"/>
+      <Typography align='center' fontSize={18}><b>{food2[0]}</b></Typography>
+      </Stack>
+
+        <Stack direction="row" spacing={3} justifyContent="center">
+        </Stack>
 
       </Stack>
 
