@@ -28,12 +28,10 @@ export default function FoodInfoPage(props){
         <Typography sx={{mt: 1.5, width: '80%'}} align='center'fontSize={20}><b>{food1[0]}</b></Typography>
         <Box sx={{width: '30%', mt: 3}}><MyPieChart food={food1}/></Box>
         <Box sx={{mt: 4, width: '100%'}}><DirectionStack food={food1}/></Box>
-      </Stack>
-      <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
-        <Fab color='secondary' variant='extended' onClick={props.handleClick} sx={{width: '80%'}}>
+        <Fab color='secondary' variant='extended' onClick={props.handleClick} sx={{width: '80%', my: 3}}>
           <Typography sx={{color: 'white'}}>次へ</Typography>
         </Fab>
-      </Box>
+      </Stack>
 
     </Box>
   );

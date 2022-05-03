@@ -135,7 +135,7 @@ export default function FirstFoodsPage(props) {
           onOpen={toggleDrawer(true)}
         >
           <Box
-            sx={{ width: '100%', height: window.innerHeight * 0.7 }}
+            sx={{ width: '100%'}}
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
