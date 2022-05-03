@@ -4,6 +4,11 @@ import DirectionStack from './DirectionStack'
 import MyPieChart from './MyPieChart'
 
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import CelebrationTwoToneIcon from '@mui/icons-material/CelebrationTwoTone';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawesome/free-solid-svg-icons'
+import {pink, blue, indigo, purple, cyan, orange, lime, grey} from '@mui/material/colors'
 
 
 export default function ResultPage(){
@@ -22,10 +27,20 @@ export default function ResultPage(){
   return(
     <Box sx={{width: '100%', boxSizing: 'border-box'}}>
     <Stack alignItems='center'>
-      <LocalFireDepartmentIcon sx={{fontSize: 50, mt: 10}}/>
-      <Typography align='center' variant='h6'><b>{food1[0]}</b></Typography>
-      <Typography align='center'>&</Typography>
-      <Typography align='center' variant='h6'><b>{food2[0]}</b></Typography>
+      <CelebrationTwoToneIcon sx={{fontSize: 70, mt: 5}} color="secondary"/>
+      <Stack sx={{mt: 3}} spacing={1} justifyContent="center">
+        <Stack direction="row" alignItems="center" spacing={1}  justifyContent="center">
+        <FontAwesomeIcon icon={faDrumstickBite} color={pink[200]} fontSize={20}/>
+        <Typography align='center' fontSize={18}><b>{food1[0]}</b></Typography>
+        </Stack>
+
+        <Typography align='center'>&</Typography>
+        <Stack direction="row" alignItems="center" spacing={1}  justifyContent="center">
+        <FontAwesomeIcon icon={faBowlFood} color={pink[200]} fontSize={20}/>
+        <Typography align='center' fontSize={18}><b>{food2[0]}</b></Typography>
+        </Stack>
+
+      </Stack>
 
       <Box sx={{width: '30%', mt: 3}}><MyPieChart food={sum}/></Box>
       <Box sx={{mt: 3}}><DirectionStack food={sum}/></Box>

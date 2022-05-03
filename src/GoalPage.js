@@ -9,7 +9,7 @@ import Page from './Page'
 import {pink, blue, indigo, purple, cyan, orange, lime, grey} from '@mui/material/colors'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet, faDumbbell} from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -31,6 +31,8 @@ export default function GoalPage(){
   ]
   const es = [800, 600, 900]
   const icons = [faDrumstickBite, faBowlFood, faBottleDroplet];
+  const colors = ["#82b1ff", "#ff8a80", "#74b2a4"]
+
 
   return(
     <Page text={'あなたの目標は?'} icon={<LocalFireDepartmentTwoToneIcon  sx={{fontSize: 70}} color="secondary"/>} handleClick={handleClickNext}>
@@ -38,7 +40,12 @@ export default function GoalPage(){
       <Stack spacing={3} justifyContent='center' alignItems="center" sx={{mt: 5, width:'100%'}}>
         {goals.map((goal, i) => {
           return(
-            <Button onClick={() => handleClick(i)} variant={i == id ? 'contained' : 'outlined'} color='secondary' sx={{borderRadius: 10, width: '80%', height: 60}}><b>{goal}</b></Button>
+            <Button onClick={() => handleClick(i)} variant={i == id ? 'contained' : 'outlined'} color='secondary' sx={{borderRadius: 10, width: '80%', height: 60}}>
+              <Stack direction="row" alignItems="center" spacing={1}>
+              <FontAwesomeIcon icon={faDumbbell} fontSize={18}/>
+              <b>{goal}</b>
+              </Stack>
+            </Button>
           )
         })}
       </Stack>
@@ -46,7 +53,7 @@ export default function GoalPage(){
         <Typography fontSize={15}>摂取カロリー</Typography>
         <Stack direction='row' spacing={1} justifyContent='center' alignItems="center">
           <LocalFireDepartmentTwoToneIcon color="secondary"/>
-          <Typography fontSize={30} color={cyan[300]}>{es[id]}</Typography>
+          <Typography fontSize={30}>{es[id]}</Typography>
           <Typography variant="span">kcal</Typography>
         </Stack>
       </Stack>
@@ -56,8 +63,8 @@ export default function GoalPage(){
             <Stack justifyContent='center' alignItems="center">
               <Typography fontSize={15}>{pfc.name}</Typography>
               <Stack direction="row" alignItems="center" spacing={1}>
-                <FontAwesomeIcon icon={icons[i]} color={pink[200]}/>
-                <Typography color={cyan[300]} fontSize={20}>{pfc.value}</Typography>
+                <FontAwesomeIcon icon={icons[i]} color={colors[i]}/>
+                <Typography fontSize={20}>{pfc.value}</Typography>
                 <Typography fontSize={15} variant="span" color={grey[700]}>%</Typography>
               </Stack>
             </Stack>

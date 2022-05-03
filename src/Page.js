@@ -1,11 +1,11 @@
-import {Box, Stack, Typography, Fab} from '@mui/material'
+import {Box, Stack, Typography, Fab, Zoom} from '@mui/material'
 
 
 export default function Page(props){
   return(
     <Box>
       <Stack alignItems="center" sx={{width: '100%'}}>
-        <Box sx={{mt: 5}}>{props.icon}</Box>
+        <Box sx={{mt: 5}}><Zoom in={true}>{props.icon}</Zoom></Box>
         <Typography sx={{mt: 1}} fontSize={20}><b>{props.text}</b></Typography>
         {props.children}
       </Stack>
