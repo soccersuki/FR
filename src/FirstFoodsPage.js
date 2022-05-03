@@ -21,6 +21,8 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 import FoodInfoPage from './FoodInfoPage'
 
+import SetMealTwoToneIcon from '@mui/icons-material/SetMealTwoTone';
+
 const eI = [1600 / 3, 2250 / 3]
 const pI = [0.15, 0.25]
 const fI = [0.15, 0.25]
@@ -124,7 +126,7 @@ export default function FirstFoodsPage(props) {
 
 
   return(
-    <Page text={'一品目を選んでください'} icon={<LocalFireDepartmentIcon sx={{fontSize: 50}}/>}>
+    <Page text={'一品目を選んでください'} icon={<SetMealTwoToneIcon sx={{fontSize: 70}} color="secondary"/>}>
       <Box sx={{width: '100%', boxSizing: 'border-box', px: 2, mt: 2}}>
         <SwipeableDrawer
           anchor={'bottom'}
@@ -133,7 +135,7 @@ export default function FirstFoodsPage(props) {
           onOpen={toggleDrawer(true)}
         >
           <Box
-            sx={{ width: '100%', height: window.innerHeight * 0.6 }}
+            sx={{ width: '100%', height: window.innerHeight * 0.7 }}
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}

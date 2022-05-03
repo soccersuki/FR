@@ -22,12 +22,11 @@ export default function FoodInfoPage(props){
   return (
     <Box sx={{width: '100%', boxSizing: 'border-box'}}>
       <Stack alignItems='center'>
-      <Stack direction='row' alignItems='center' justifyContent="flex-start" sx={{width: '100%'}}>
-      <IconButton>
+      <IconButton sx={{position: 'fixed', left: 0}}>
         <KeyboardArrowDownIcon fontSize='large'/>
       </IconButton>
-      <Typography variant='h6'><b>{food1[0]}</b></Typography>
-      </Stack>
+
+      <Typography sx={{mt: 1.5}} fontSize={20}><b>{food1[0]}</b></Typography>
         <Box sx={{width: '30%', mt: 4}}><MyPieChart food={food1}/></Box>
         <Box sx={{mt: 4, width: '100%'}}><DirectionStack food={food1}/></Box>
       </Stack>

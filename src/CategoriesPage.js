@@ -6,6 +6,11 @@ import TitlebarImageList2 from './TitlebarImageList2'
 import categoriesData from './categoriesData'
 
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawesome/free-solid-svg-icons'
+
 
 import Page from './Page'
 
@@ -40,7 +45,7 @@ export default function CategoriesPage(props){
   }
 
   return(
-    <Page text={'何が食べたいですか'} icon={<LocalFireDepartmentIcon sx={{fontSize: 50}}/>} handleClick={handleClickNext}>
+    <Page text={'何が食べたいですか'} icon={<CategoryTwoToneIcon sx={{fontSize: 70}} color="secondary"/>} handleClick={handleClickNext}>
     <Box sx={{width: '100%', boxSizing: 'border-box', px: 6, mt: 2}}>
     <Box sx={{mt: 2}}><MyInput handleSubmit={handleSubmit}/></Box>
     <Divider sx={{mt: 2, width: '100%'}}/>
@@ -51,7 +56,7 @@ export default function CategoriesPage(props){
             <Grid item xs={6}>
               <Button onClick={() => handleClick(i)} sx={{width: '100%', height: 140, borderRadius: 10}} color='secondary' variant={i == id ? 'contained' : 'outlined'}>
                 <Stack alignItems="center" spacing={1}>
-                  <LocalFireDepartmentIcon/>
+                  <FontAwesomeIcon icon={faDrumstickBite} fontSize={20} beat={i == id}/>
                   <Box>{store.title}</Box>
                 </Stack>
               </Button>
