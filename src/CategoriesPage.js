@@ -15,7 +15,7 @@ import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawes
 import Page from './Page'
 
 export default function CategoriesPage(props){
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [id, setId] = useState(0)
   const {foods} = props;
 
@@ -32,7 +32,7 @@ export default function CategoriesPage(props){
     })
     console.log(foods1)
 
-    navigate('/first', {state: {foods1: foods1}})
+    // navigate('/first', {state: {foods1: foods1}})
   }
 
   const handleClickNext = () => {
@@ -41,7 +41,9 @@ export default function CategoriesPage(props){
       return categoriesData[id].queries.some(query => food[0].includes(query));
     })
     console.log(foods1);
-    navigate('/first', {state: {foods1: foods1}})
+    props.setFoods1(foods1);
+    props.handleClick();
+    // navigate('/first', {state: {foods1: foods1}})
   }
 
   return(

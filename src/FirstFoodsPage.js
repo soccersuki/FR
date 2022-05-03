@@ -30,11 +30,12 @@ const cI = [0.50, 0.60]
 
 
 export default function FirstFoodsPage(props) {
-  const navigate = useNavigate()
-  const location = useLocation()
+  // const navigate = useNavigate()
+  // const location = useLocation()
 
   // const {foods1} = location.state
-  const [foods1, setFoods1] = useState(location.state.foods1)
+  const [foods1, setFoods1] = useState(props.foods1)
+  console.log(foods1);
   const {foods} = props;
 
   const [state, setState] = useState(false);
@@ -67,9 +68,13 @@ export default function FirstFoodsPage(props) {
       return ok
     })
 
+    props.setFood1(food1);
+    props.setFoods2(foods2);
+
     setState(false);
     setTimeout(() => {
-      navigate('/second', {state: {food1: food1, foods2: foods2}})
+      props.handleClick();
+      // navigate('/second', {state: {food1: food1, foods2: foods2}})
     }, 500)
     // navigate('/second', {state: {food1: food1, foods2: foods2}})
   }
@@ -113,7 +118,7 @@ export default function FirstFoodsPage(props) {
       return ok
     })
 
-    navigate('/foodinfo', {state: {food1: food1, foods2: foods2}})
+    // navigate('/foodinfo', {state: {food1: food1, foods2: foods2}})
 
   }
 

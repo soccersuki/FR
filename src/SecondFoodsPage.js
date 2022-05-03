@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import {useNavigate, useLocation} from 'react-router-dom'
 import {Box, Typography, Stack, Fab} from '@mui/material'
 import FolderList from './FolderList'
@@ -6,17 +7,20 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import Page from './Page'
 
 
-export default function SecondFoodsPage(){
-  const navigate = useNavigate()
-  const location = useLocation()
+export default function SecondFoodsPage(props){
+  // const navigate = useNavigate()
+  // const location = useLocation()
 
-  const {food1, foods2} = location.state
+  // const {food1, foods2} = location.state
+  const [foods2, setFoods2] = useState(props.foods2);
 
 
   const handleClick = (i) => {
     console.log('click')
     console.log(foods2[i])
-    navigate('/result', {state: {food1: food1, food2: foods2[i]}})
+    props.setFood2(foods2[i]);
+    props.handleClick();
+    // navigate('/result', {state: {food1: food1, food2: foods2[i]}})
   }
   return (
     <Page text={'二品目を選んでください'} icon={<LocalFireDepartmentIcon sx={{fontSize: 50}}/>}>

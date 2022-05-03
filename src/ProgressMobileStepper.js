@@ -5,16 +5,16 @@ import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
-export default function ProgressMobileStepper() {
+export default function ProgressMobileStepper(props) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    props.setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    props.setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   return (
@@ -24,25 +24,17 @@ export default function ProgressMobileStepper() {
       variant="progress"
       steps={6}
       position="static"
-      activeStep={activeStep}
+      activeStep={props.activeStep}
       sx={{ maxWidth: 400, flexGrow: 1 }}
       nextButton={
-        <Button color="secondary"size="small" onClick={handleNext} disabled={activeStep === 5}>
+        <Button color="secondary"size="small" onClick={handleNext} disabled={props.activeStep === 5}>
           Next
-          {theme.direction === 'rtl' ? (
-            <KeyboardArrowLeft />
-          ) : (
-            <KeyboardArrowRight />
-          )}
+          <KeyboardArrowRight />
         </Button>
       }
       backButton={
-        <Button color="secondary"size="small" onClick={handleBack} disabled={activeStep === 0}>
-          {theme.direction === 'rtl' ? (
-            <KeyboardArrowRight />
-          ) : (
-            <KeyboardArrowLeft />
-          )}
+        <Button color="secondary"size="small" onClick={handleBack} disabled={props.activeStep === 0}>
+          <KeyboardArrowLeft />
           Back
         </Button>
       }

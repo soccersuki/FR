@@ -9,16 +9,17 @@ import Page from './Page'
 import {pink, blue, indigo, purple, cyan, orange, lime, grey} from '@mui/material/colors'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet, faDumbbell} from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet, faDumbbell, faWeightScale} from '@fortawesome/free-solid-svg-icons'
+
+import RocketLaunchTwoToneIcon from '@mui/icons-material/RocketLaunchTwoTone';
 
 
-
-export default function GoalPage(){
-  const navigate = useNavigate()
+export default function GoalPage(props){
+  // const navigate = useNavigate()
   const [id, setId] = useState(0);
   const handleClickNext = () => {
     console.log(id)
-    navigate('/rests')
+    // navigate('/rests')
   }
   const handleClick = (id) => {
     setId(id);
@@ -31,18 +32,19 @@ export default function GoalPage(){
   ]
   const es = [800, 600, 900]
   const icons = [faDrumstickBite, faBowlFood, faBottleDroplet];
-  const colors = ["#82b1ff", "#ff8a80", "#74b2a4"]
+  const colors = ["#82b1ff", "#ff8a80", "#74b2a4"];
+  const icons2 = [faDumbbell, faWeightScale, null];
 
 
   return(
-    <Page text={'あなたの目標は?'} icon={<LocalFireDepartmentTwoToneIcon  sx={{fontSize: 70}} color="secondary"/>} handleClick={handleClickNext}>
+    <Page text={'あなたの目標は?'} icon={<RocketLaunchTwoToneIcon  sx={{fontSize: 70}} color="secondary"/>} handleClick={props.handleClick}>
 
       <Stack spacing={3} justifyContent='center' alignItems="center" sx={{mt: 5, width:'100%'}}>
         {goals.map((goal, i) => {
           return(
             <Button onClick={() => handleClick(i)} variant={i == id ? 'contained' : 'outlined'} color='secondary' sx={{borderRadius: 10, width: '80%', height: 60}}>
               <Stack direction="row" alignItems="center" spacing={1}>
-              <FontAwesomeIcon icon={faDumbbell} fontSize={18}/>
+              <FontAwesomeIcon icon={icons2[i]} fontSize={18}/>
               <b>{goal}</b>
               </Stack>
             </Button>

@@ -83,22 +83,43 @@ foods = foods.filter((food) => {
 })
 
 export default function App() {
+  const [id, setId] = useState(0);
+  const [food1, setFood1] = useState(null);
+  const [food2, setFood2] = useState(null);
+  const [foods1, setFoods1] = useState([]);
+  const [foods2, setFoods2] = useState([]);
+  const handleClick = () => {
+    setId(id + 1);
+  }
+  const pages = [
+    <GoalPage handleClick={handleClick}/>,
+    <StoresPage handleClick={handleClick}/>,
+    <CategoriesPage foods={foods} setFoods1={setFoods1} handleClick={handleClick}/>,
+    <FirstFoodsPage foods={foods} foods1={foods1} setFood1={setFood1} setFoods2={setFoods2} handleClick={handleClick}/>,
+    <SecondFoodsPage foods2={foods2} setFood2={setFood2} handleClick={handleClick}/>,
+    <ResultPage food1={food1} food2={food2} handleClick={handleClick}/>,
+  ];
+  // return (
+  //   <ThemeProvider theme={theme}>
+  //     <ProgressMobileStepper />
+  //     <HashRouter>
+  //       <Routes>
+  //         <Route path='/' element={<GoalPage />}/>
+  //         <Route path='/rests' element={<StoresPage />} />
+  //         <Route path='/search' element={<CategoriesPage foods={foods}/>} />
+  //         <Route path='/first' element={<FirstFoodsPage foods={foods}/>} />
+  //         <Route path='/foodinfo' element={<FoodInfoPage />} />
+  //         <Route path='/second' element={<SecondFoodsPage />} />
+  //         <Route path='/result' element={<ResultPage />} />
+  //       </Routes>
+  //     </HashRouter>
+  //   </ThemeProvider>
+  // );
+
   return (
     <ThemeProvider theme={theme}>
-      <CookiesProvider>
-        <ProgressMobileStepper />
-        <HashRouter>
-          <Routes>
-            <Route path='/' element={<GoalPage />}/>
-            <Route path='/rests' element={<StoresPage />} />
-            <Route path='/search' element={<CategoriesPage foods={foods}/>} />
-            <Route path='/first' element={<FirstFoodsPage foods={foods}/>} />
-            <Route path='/foodinfo' element={<FoodInfoPage />} />
-            <Route path='/second' element={<SecondFoodsPage />} />
-            <Route path='/result' element={<ResultPage />} />
-          </Routes>
-        </HashRouter>
-      </CookiesProvider>
+      <ProgressMobileStepper activeStep={id} setActiveStep={setId}/>
+      {pages[id]}
     </ThemeProvider>
   );
 }

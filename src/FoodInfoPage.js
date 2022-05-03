@@ -8,8 +8,8 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function FoodInfoPage(props){
-  const navigate = useNavigate()
-  const location = useLocation()
+  // const navigate = useNavigate()
+  // const location = useLocation()
 
   // const {food1, foods2} = location.state
 
@@ -17,7 +17,7 @@ export default function FoodInfoPage(props){
 
 
   const handleClick = (i) => {
-    navigate('/second', {state: {food1: food1, foods2: foods2}})
+    // navigate('/second', {state: {food1: food1, foods2: foods2}})
   }
   return (
     <Box sx={{width: '100%', boxSizing: 'border-box'}}>
@@ -28,7 +28,7 @@ export default function FoodInfoPage(props){
         <Typography sx={{mt: 1.5, width: '80%'}} align='center'fontSize={20}><b>{food1[0]}</b></Typography>
         <Box sx={{width: '30%', mt: 3}}><MyPieChart food={food1}/></Box>
         <Box sx={{mt: 4, width: '100%'}}><DirectionStack food={food1}/></Box>
-        <Fab color='secondary' variant='extended' onClick={props.handleClick} sx={{width: '80%', my: 3}}>
+        <Fab color='secondary' variant='extended' onClick={props.handleClick} sx={{width: '80%', mt: 6, mb: 3}}>
           <Typography sx={{color: 'white'}}>次へ</Typography>
         </Fab>
       </Stack>
