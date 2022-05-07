@@ -1,47 +1,17 @@
 import './App.css';
+import {useState, } from 'react'
 
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import MyInput from './MyInput'
-
-import MyPieChart from './MyPieChart'
-import DirectionStack from './DirectionStack'
-
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useNavigate,
-  useLocation,
-  HashRouter,
-} from "react-router-dom";
-
-import FolderList from './FolderList'
-import TitlebarImageList from './TitlebarImageList'
-import TitlebarImageList2 from './TitlebarImageList2'
-import BasicButtons from './BasicButtons'
 import foods from './foods_lawson.json'
+import {pink, grey} from '@mui/material/colors'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ProgressMobileStepper from './ProgressMobileStepper'
 
 
-import {Stack, Divider, Button, Grid, Paper, TextField, Fab, Input, InputBase, InputAdornment} from '@mui/material'
-
-import {useState, } from 'react'
-
-import {pink, grey} from '@mui/material/colors'
-
-import { CookiesProvider, useCookies } from 'react-cookie';
-
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-
-import TopPage from './TopPage'
-
-import CategoriesPage from './CategoriesPage'
-import StoresPage from './StoresPage'
+import TopPage from './pages/TopPage'
 import GoalPage from './GoalPage'
+import StoresPage from './StoresPage'
+import CategoriesPage from './CategoriesPage'
 import FirstFoodsPage from './FirstFoodsPage'
-import FoodInfoPage from './FoodInfoPage'
 import SecondFoodsPage from './SecondFoodsPage'
 import ResultPage from './ResultPage'
 
@@ -83,7 +53,7 @@ foods = foods.filter((food) => {
 })
 
 export default function App() {
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(-1);
   const [food1, setFood1] = useState(null);
   const [food2, setFood2] = useState(null);
   const [foods1, setFoods1] = useState([]);
@@ -103,27 +73,11 @@ export default function App() {
     <SecondFoodsPage foods2={foods2} setFood2={setFood2} handleClick={handleClick}/>,
     <ResultPage food1={food1} food2={food2} handleClick={handleClick}/>,
   ];
-  // return (
-  //   <ThemeProvider theme={theme}>
-  //     <ProgressMobileStepper />
-  //     <HashRouter>
-  //       <Routes>
-  //         <Route path='/' element={<GoalPage />}/>
-  //         <Route path='/rests' element={<StoresPage />} />
-  //         <Route path='/search' element={<CategoriesPage foods={foods}/>} />
-  //         <Route path='/first' element={<FirstFoodsPage foods={foods}/>} />
-  //         <Route path='/foodinfo' element={<FoodInfoPage />} />
-  //         <Route path='/second' element={<SecondFoodsPage />} />
-  //         <Route path='/result' element={<ResultPage />} />
-  //       </Routes>
-  //     </HashRouter>
-  //   </ThemeProvider>
-  // );
 
   return (
     <ThemeProvider theme={theme}>
-      {showTop ?
-        <TopPage setShowTop={setShowTop}/>
+      {id == -1 ?
+        <TopPage handleClick={handleClick}/>
         :
         <>
           <ProgressMobileStepper activeStep={id} setActiveStep={setId}/>

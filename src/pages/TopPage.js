@@ -2,7 +2,7 @@ import {pink, blue, indigo, purple, cyan, orange, lime, grey} from '@mui/materia
 import {Box, Stack, Typography, Button, Fab, Divider} from '@mui/material'
 
 import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
-import MyStepper from './MyStepper'
+import MyStepper from '../MyStepper'
 
 export default function TopPage(props){
   const handleClick = () => {
@@ -19,7 +19,7 @@ export default function TopPage(props){
           <Box sx={{mt: 2, width: '100%'}}><MyStepper /></Box>
         </Stack>
         <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
-          <Fab color='secondary' variant='extended' onClick={handleClick} sx={{width: '80%'}}>
+          <Fab color='secondary' variant='extended' onClick={props.handleClick} sx={{width: '80%'}}>
             <Typography sx={{color: 'white'}}>さっそく始める</Typography>
           </Fab>
         </Box>
