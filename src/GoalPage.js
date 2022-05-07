@@ -13,54 +13,95 @@ export default function GoalPage(props){
   const handleClick = (id) => {
     setId(id);
   }
-  const goals = ['ダイエット', '筋トレ', '特になし']
-  const pfcs = [
-    [{name: 'たんぱく質', value: 15}, {name: '脂質', value: 25}, {name: '炭水化物', value: 60}],
-    [{name: 'たんぱく質', value: 20}, {name: '脂質', value: 20}, {name: '炭水化物', value: 60}],
-    [{name: 'たんぱく質', value: 30}, {name: '脂質', value: 20}, {name: '炭水化物', value: 50}],
+
+  const options = [
+    {
+      text: 'ダイエット',
+      icon: faWeightScale,
+      e: 800,
+      pfc: [15, 25, 60],
+    },
+    {
+      text: '筋トレ',
+      icon: faDumbbell,
+      e: 600,
+      pfc: [20, 20, 60],
+    },
+    {
+      text: '特になし',
+      icon: null,
+      e: 900,
+      pfc: [30, 20, 50],
+    },
   ]
-  const es = [800, 600, 900]
-  const icons = [faDrumstickBite, faBowlFood, faBottleDroplet];
-  const colors = ["#82b1ff", "#ff8a80", "#74b2a4"];
-  const icons2 = [faDumbbell, faWeightScale, null];
 
 
   return(
     <Page text={'あなたの目標は?'} icon={<RocketLaunchTwoToneIcon sx={{fontSize: 70}} color="secondary"/>} handleClick={props.handleClick}>
       <Stack spacing={3} justifyContent='center' alignItems="center" sx={{mt: 5, width:'100%'}}>
-        {goals.map((goal, i) => {
+        {options.map((option, i) => {
           return(
             <Button onClick={() => handleClick(i)} variant={i == id ? 'contained' : 'outlined'} color='secondary' sx={{borderRadius: 10, width: '80%', height: 60}}>
               <Stack direction="row" alignItems="center" spacing={1}>
-              <FontAwesomeIcon icon={icons2[i]} fontSize={18}/>
-              <b>{goal}</b>
+              <FontAwesomeIcon icon={option.icon} fontSize={18}/>
+              <b>{option.text}</b>
               </Stack>
             </Button>
           )
         })}
       </Stack>
-      <Stack justifyContent='center' alignItems="center" sx={{mt: 3}}>
-        <Typography fontSize={15}>摂取カロリー</Typography>
-        <Stack direction='row' spacing={1} justifyContent='center' alignItems="center">
-          <LocalFireDepartmentTwoToneIcon color="secondary"/>
-          <Typography fontSize={30}>{es[id]}</Typography>
-          <Typography variant="span">kcal</Typography>
-        </Stack>
-      </Stack>
-      <Stack direction='row' spacing={2} sx={{mt: 1}}  divider={<Divider orientation="vertical" flexItem />}>
-        {pfcs[id].map((pfc, i) => {
-          return(
-            <Stack justifyContent='center' alignItems="center">
-              <Typography fontSize={15}>{pfc.name}</Typography>
-              <Stack direction="row" alignItems="center" spacing={1}>
-                <FontAwesomeIcon icon={icons[i]} color={colors[i]}/>
-                <Typography fontSize={20}>{pfc.value}</Typography>
-                <Typography fontSize={15} variant="span">%</Typography>
-              </Stack>
-            </Stack>
-          )
-        })}
-      </Stack>
+      <Energy e={options[id].e}/>
+      <Pfc pfc={options[id].pfc}/>
     </Page>
+  )
+}
+
+function Energy(props){
+  return(
+    <Stack justifyContent='center' alignItems="center" sx={{mt: 3}}>
+      <Typography fontSize={15}>摂取カロリー</Typography>
+      <Stack direction='row' spacing={1} justifyContent='center' alignItems="center">
+        <LocalFireDepartmentTwoToneIcon color="secondary"/>
+        <Typography fontSize={30}>{props.e}</Typography>
+        <Typography variant="span">kcal</Typography>
+      </Stack>
+    </Stack>
+  )
+}
+
+function Pfc(props){
+  const pfc = [
+    {
+      name: 'たんぱく質',
+      icon: faDrumstickBite,
+      color: '#82b1ff',
+    },
+    {
+      name: '脂質',
+      icon: faBowlFood,
+      color: '#ff8a80',
+    },
+    {
+      name: '炭水化物',
+      icon: faBottleDroplet,
+      color: '#74b2a4',
+    },
+  ]
+
+  return(
+    <Stack direction='row' spacing={2} sx={{mt: 1}}  divider={<Divider orientation="vertical" flexItem />}>
+      {props.pfc.map((value, i) => {
+        return(
+          <Stack justifyContent='center' alignItems="center">
+            <Typography fontSize={15}>{pfc[i].name}</Typography>
+            <Stack direction="row" alignItems="center" spacing={1}>
+              <FontAwesomeIcon icon={pfc[i].icon} color={pfc[i].color}/>
+              <Typography fontSize={20}>{value}</Typography>
+              <Typography fontSize={15} variant="span">%</Typography>
+            </Stack>
+          </Stack>
+        )
+      })}
+    </Stack>
   )
 }

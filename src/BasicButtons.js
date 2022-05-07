@@ -6,7 +6,7 @@ import ShuffleIcon from '@mui/icons-material/Shuffle';
 import SortIcon from '@mui/icons-material/Sort';
 import { grey, pink } from '@mui/material/colors';
 
-import {Menu, MenuItem, MenuList} from '@mui/material'
+import {Menu, MenuItem, MenuList, NativeSelect, Paper, InputBase} from '@mui/material'
 
 
 export default function BasicButtons(props) {
@@ -24,20 +24,16 @@ export default function BasicButtons(props) {
       <Button onClick={props.handleClick1} variant="contained" startIcon={<ShuffleIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[200], color: pink[200], borderRadius: '10px'}}  size="large"><b>ランダム</b></Button>
       <Button onClick={handleClick} variant="contained" startIcon={<SortIcon />}  disableElevation sx={{width: '48%', bgcolor: grey[200], color: pink[200], borderRadius: '10px'}}  size="large"><b>並び替え</b></Button>
       <Menu
-        id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
       >
-        <MenuList dense disablePadding>
-        <MenuItem divider onClick={() => handleClose(0)}>カロリー多い順</MenuItem>
-        <MenuItem divider onClick={() => handleClose(1)}>カロリー少ない順</MenuItem>
-        <MenuItem onClick={() => handleClose(2)}>人気順</MenuItem>
-        </MenuList>
+      <MenuItem divider onClick={() => handleClose(0)}>カロリー多い順</MenuItem>
+      <MenuItem divider onClick={() => handleClose(1)}>カロリー少ない順</MenuItem>
+      <MenuItem onClick={() => handleClose(2)}>人気順</MenuItem>
+
       </Menu>
+
     </Stack>
   );
 }

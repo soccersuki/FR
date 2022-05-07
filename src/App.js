@@ -1,7 +1,6 @@
 import './App.css';
 import {useState, } from 'react'
 
-import foods from './foods_lawson.json'
 import {pink, grey} from '@mui/material/colors'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ProgressMobileStepper from './ProgressMobileStepper'
@@ -14,6 +13,8 @@ import CategoriesPage from './CategoriesPage'
 import FirstFoodsPage from './FirstFoodsPage'
 import SecondFoodsPage from './SecondFoodsPage'
 import ResultPage from './ResultPage'
+
+import foods from './foods_lawson.json'
 
 const theme = createTheme({
   palette: {
@@ -58,8 +59,6 @@ export default function App() {
   const [food2, setFood2] = useState(null);
   const [foods1, setFoods1] = useState([]);
   const [foods2, setFoods2] = useState([]);
-
-  const [showTop, setShowTop] = useState(true);
 
   const handleClick = () => {
     setId(id + 1);
