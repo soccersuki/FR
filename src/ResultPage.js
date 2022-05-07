@@ -1,25 +1,16 @@
-import {useLocation} from 'react-router-dom'
 import {Box, Typography, Stack, Fab} from '@mui/material'
 import DirectionStack from './DirectionStack'
 import MyPieChart from './MyPieChart'
 
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import CelebrationTwoToneIcon from '@mui/icons-material/CelebrationTwoTone';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawesome/free-solid-svg-icons'
-import {pink, blue, indigo, purple, cyan, orange, lime, grey} from '@mui/material/colors'
-
-import RocketLaunchTwoToneIcon from '@mui/icons-material/RocketLaunchTwoTone';
-import LocalConvenienceStoreTwoToneIcon from '@mui/icons-material/LocalConvenienceStoreTwoTone';
+import { faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawesome/free-solid-svg-icons'
 
 import LooksOneTwoToneIcon from '@mui/icons-material/LooksOneTwoTone';
 import LooksTwoTwoToneIcon from '@mui/icons-material/LooksTwoTwoTone';
 
 export default function ResultPage(props){
-  // const location = useLocation()
-
-  // const {food1, food2} = location.state
 
   const {food1, food2} = props;
 

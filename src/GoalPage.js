@@ -1,26 +1,15 @@
 import {useState} from 'react'
-import {useNavigate, } from 'react-router-dom'
 import {Box, Stack, Typography, Button, Fab, Divider} from '@mui/material'
-
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
-import Page from './Page'
-
-import {pink, blue, indigo, purple, cyan, orange, lime, grey} from '@mui/material/colors'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet, faDumbbell, faWeightScale} from '@fortawesome/free-solid-svg-icons'
-
+import { faBowlFood, faDrumstickBite, faBottleDroplet, faDumbbell, faWeightScale} from '@fortawesome/free-solid-svg-icons'
 import RocketLaunchTwoToneIcon from '@mui/icons-material/RocketLaunchTwoTone';
+import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
+
+import Page from './Page'
 
 
 export default function GoalPage(props){
-  // const navigate = useNavigate()
   const [id, setId] = useState(0);
-  const handleClickNext = () => {
-    console.log(id)
-    // navigate('/rests')
-  }
   const handleClick = (id) => {
     setId(id);
   }
@@ -37,8 +26,7 @@ export default function GoalPage(props){
 
 
   return(
-    <Page text={'あなたの目標は??'} icon={<RocketLaunchTwoToneIcon  sx={{fontSize: 70}} color="secondary"/>} handleClick={props.handleClick}>
-
+    <Page text={'あなたの目標は?'} icon={<RocketLaunchTwoToneIcon sx={{fontSize: 70}} color="secondary"/>} handleClick={props.handleClick}>
       <Stack spacing={3} justifyContent='center' alignItems="center" sx={{mt: 5, width:'100%'}}>
         {goals.map((goal, i) => {
           return(
@@ -67,7 +55,7 @@ export default function GoalPage(props){
               <Stack direction="row" alignItems="center" spacing={1}>
                 <FontAwesomeIcon icon={icons[i]} color={colors[i]}/>
                 <Typography fontSize={20}>{pfc.value}</Typography>
-                <Typography fontSize={15} variant="span" color={grey[700]}>%</Typography>
+                <Typography fontSize={15} variant="span">%</Typography>
               </Stack>
             </Stack>
           )

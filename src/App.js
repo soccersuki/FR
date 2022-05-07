@@ -7,7 +7,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ProgressMobileStepper from './ProgressMobileStepper'
 
 
-import TopPage from './pages/TopPage'
+import TopPage from './TopPage'
 import GoalPage from './GoalPage'
 import StoresPage from './StoresPage'
 import CategoriesPage from './CategoriesPage'

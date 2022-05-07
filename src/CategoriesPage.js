@@ -1,21 +1,16 @@
 import {useState} from 'react'
-import {useNavigate, } from 'react-router-dom'
 import {Box, Typography, Divider, Fab, Stack, Grid, Button} from '@mui/material'
-import MyInput from './MyInput'
-import TitlebarImageList2 from './TitlebarImageList2'
-import categoriesData from './categoriesData'
-
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawesome/free-solid-svg-icons'
 
 
 import Page from './Page'
+import MyInput from './MyInput'
+import categoriesData from './categoriesData'
+
 
 export default function CategoriesPage(props){
-  // const navigate = useNavigate();
   const [id, setId] = useState(0)
   const {foods} = props;
 

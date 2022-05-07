@@ -2,7 +2,7 @@ import {pink, blue, indigo, purple, cyan, orange, lime, grey} from '@mui/materia
 import {Box, Stack, Typography, Button, Fab, Divider} from '@mui/material'
 
 import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
-import MyStepper from '../MyStepper'
+import MyStepper from './MyStepper'
 
 export default function TopPage(props){
   const handleClick = () => {

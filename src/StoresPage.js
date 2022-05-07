@@ -1,11 +1,8 @@
 import {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
 import {Box, Typography, Stack, Fab, Grid, Paper, Button} from '@mui/material'
-import TitlebarImageList2 from './TitlebarImageList2'
 import storesData from './storesData'
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-import LocalConvenienceStoreTwoToneIcon from '@mui/icons-material/LocalConvenienceStoreTwoTone';
 
+import LocalConvenienceStoreTwoToneIcon from '@mui/icons-material/LocalConvenienceStoreTwoTone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {fa7, faL, faF, faM} from '@fortawesome/free-solid-svg-icons'
 
@@ -13,14 +10,10 @@ import Page from './Page'
 
 
 export default function StoresPage(props){
-  // const navigate = useNavigate()
   const [id, setId] = useState(0);
   const handleClick = (id) => {
     console.log(id)
     setId(id);
-  }
-  const handleClickNext = () => {
-    // navigate('/search')
   }
   const stores = ['セブンイレブン', 'ローソン', 'ファミマ', 'ミニストップ'];
   const icons = [fa7, faL, faF, faM];

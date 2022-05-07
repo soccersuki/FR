@@ -1,4 +1,3 @@
-import {useNavigate, useLocation} from 'react-router-dom'
 import {useState} from 'react'
 import {Box, Typography, Stack} from '@mui/material'
 import BasicButtons from './BasicButtons'
@@ -7,15 +6,7 @@ import FolderList from './FolderList'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import Page from './Page'
 
-import MyDrawer from './MyDrawer'
 
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
@@ -30,10 +21,6 @@ const cI = [0.50, 0.60]
 
 
 export default function FirstFoodsPage(props) {
-  // const navigate = useNavigate()
-  // const location = useLocation()
-
-  // const {foods1} = location.state
   const [foods1, setFoods1] = useState(props.foods1)
   console.log(foods1);
   const {foods} = props;
