@@ -35,7 +35,7 @@ import { CookiesProvider, useCookies } from 'react-cookie';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
-
+import TopPage from './TopPage'
 
 import CategoriesPage from './CategoriesPage'
 import StoresPage from './StoresPage'
@@ -88,9 +88,13 @@ export default function App() {
   const [food2, setFood2] = useState(null);
   const [foods1, setFoods1] = useState([]);
   const [foods2, setFoods2] = useState([]);
+
+  const [showTop, setShowTop] = useState(true);
+
   const handleClick = () => {
     setId(id + 1);
   }
+
   const pages = [
     <GoalPage handleClick={handleClick}/>,
     <StoresPage handleClick={handleClick}/>,
@@ -118,8 +122,14 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <ProgressMobileStepper activeStep={id} setActiveStep={setId}/>
-      {pages[id]}
+      {showTop ?
+        <TopPage setShowTop={setShowTop}/>
+        :
+        <>
+          <ProgressMobileStepper activeStep={id} setActiveStep={setId}/>
+          {pages[id]}
+        </>
+      }
     </ThemeProvider>
   );
 }
