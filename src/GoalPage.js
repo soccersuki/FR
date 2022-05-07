@@ -37,7 +37,7 @@ export default function GoalPage(props){
 
 
   return(
-    <Page text={'あなたの目標は?'} icon={<RocketLaunchTwoToneIcon  sx={{fontSize: 70}} color="secondary"/>} handleClick={props.handleClick}>
+    <Page text={'あなたの目標は??'} icon={<RocketLaunchTwoToneIcon  sx={{fontSize: 70}} color="secondary"/>} handleClick={props.handleClick}>
 
       <Stack spacing={3} justifyContent='center' alignItems="center" sx={{mt: 5, width:'100%'}}>
         {goals.map((goal, i) => {
