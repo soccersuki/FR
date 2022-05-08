@@ -51,6 +51,14 @@ export default function FoodsPage(props){
     setFoods([...foods])
   }
 
+  const handleChange = (event) => {
+    var id = event.target.value;
+    if(id == 0) ;
+    else if(id == 1) foods.sort((a, b) => b[3] - a[3]);
+    else if(id == 2) foods.sort((a, b) => a[3] - b[3]);
+    setFoods([...foods])
+  }
+
 
   return(
     <Box sx={{width: '100%', boxSizing: 'border-box', px: 2, mt: 2}}>
@@ -64,7 +72,7 @@ export default function FoodsPage(props){
           <FoodInfoPage food1={foods[id]} goal={props.goal} handleClick={handleClickNext}/>
         </Box>
       </SwipeableDrawer>
-      <Buttons handleClick1={handleClickRandom} handleClick2={handleClickSort}/>
+      <Buttons handleClick1={handleClickRandom} handleClick2={handleClickSort} handleChange={handleChange}/>
       <FoodList foods={foods} handleClick={handleClick} />
     </Box>
   )
@@ -79,10 +87,10 @@ function Buttons(props) {
       </Stack>
       <Stack direction="row" alignItems='center' justifyContent="center"  spacing={1} sx={{width: '48%', bgcolor: grey[200], color: pink[200], borderRadius: '10px', boxSizing: 'border-box', p: 1}}>
         <SortIcon />
-        <Paper elevation={0} component='select' sx={{bgcolor: grey[200], color: pink[200], outline: 'none', border: 'none', fontSize: 15}}>
-          <option>カロリー多</option>
-          <option>カロリー少</option>
-          <option>人気順</option>
+        <Paper elevation={0} onChange={props.handleChange}component='select' sx={{bgcolor: grey[200], color: pink[200], outline: 'none', border: 'none', fontSize: 15}}>
+          <option value={0}>人気順</option>
+          <option value={1}>カロリー多</option>
+          <option value={2}>カロリー少</option>
         </Paper>
       </Stack>
     </Stack>

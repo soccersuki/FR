@@ -21,7 +21,6 @@ export default function CategoriesPage(props){
     const foods1 = foods.filter((food) => {
       return food[0].includes(text)
     })
-    console.log(foods1);
     props.setFoods1(foods1);
     props.handleClick();
   }
