@@ -3,10 +3,6 @@ import DirectionStack from './DirectionStack'
 import MyPieChart from './MyPieChart'
 
 import CelebrationTwoToneIcon from '@mui/icons-material/CelebrationTwoTone';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawesome/free-solid-svg-icons'
-
 import LooksOneTwoToneIcon from '@mui/icons-material/LooksOneTwoTone';
 import LooksTwoTwoToneIcon from '@mui/icons-material/LooksTwoTwoTone';
 
@@ -22,33 +18,37 @@ export default function ResultPage(props){
 
   const handleClick = () => {}
 
+  const result = [
+    {
+      food: food1,
+      icon: <LooksOneTwoToneIcon color="secondary"/>,
+    },
+    {
+      food: food2,
+      icon: <LooksTwoTwoToneIcon color="secondary"/>,
+    },
+  ]
+
   return(
-    <Box sx={{width: '100%', boxSizing: 'border-box'}}>
-    <Stack alignItems='center'>
-      <CelebrationTwoToneIcon sx={{fontSize: 70, mt: 1}} color="secondary"/>
-      <Stack sx={{mt: 3}} spacing={1} justifyContent="center">
-      <Stack direction="row" spacing={1}>
-      <LooksOneTwoToneIcon color="secondary"/>
-      <Typography align='center' fontSize={18}><b>{food1[0]}</b></Typography>
-      </Stack>
-      <Stack direction="row" spacing={1}>
-      <LooksTwoTwoToneIcon color="secondary"/>
-      <Typography align='center' fontSize={18}><b>{food2[0]}</b></Typography>
-      </Stack>
-
-        <Stack direction="row" spacing={3} justifyContent="center">
+    <Box sx={{width: '100%'}}>
+      <Stack alignItems='center'>
+        <CelebrationTwoToneIcon sx={{fontSize: 70, mt: 1}} color="secondary"/>
+        <Stack sx={{mt: 3}} spacing={1} justifyContent="center">
+          {result.map(food => (
+            <Stack direction="row" spacing={1}>
+              {food.icon}
+              <Typography align='center' fontSize={18}><b>{food.food[0]}</b></Typography>
+            </Stack>
+          ))}
         </Stack>
-
+        <Box sx={{width: '30%', mt: 3}}><MyPieChart food={sum}/></Box>
+        <Box sx={{mt: 3}}><DirectionStack food={sum}/></Box>
       </Stack>
-
-      <Box sx={{width: '30%', mt: 3}}><MyPieChart food={sum}/></Box>
-      <Box sx={{mt: 3}}><DirectionStack food={sum}/></Box>
-    </Stack>
-    <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
-      <Fab color='secondary' variant='extended' onClick={handleClick} sx={{width: '80%'}}>
-        <Typography sx={{color: 'white'}}>次へ</Typography>
-      </Fab>
-    </Box>
+      <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
+        <Fab color='secondary' variant='extended' onClick={handleClick} sx={{width: '80%'}}>
+          <Typography sx={{color: 'white'}}>次へ</Typography>
+        </Fab>
+      </Box>
     </Box>
   )
 }

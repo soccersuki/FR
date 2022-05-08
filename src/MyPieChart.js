@@ -1,4 +1,3 @@
-// import "./styles.css";
 import React from "react";
 import { PieChart, Pie, Sector, Cell, Label, ResponsiveContainer, LabelList, } from "recharts";
 

@@ -3,22 +3,10 @@ import {Box, Typography, Stack, Fab, IconButton, } from '@mui/material'
 import DirectionStack from './DirectionStack'
 import MyPieChart from './MyPieChart'
 
-
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function FoodInfoPage(props){
-  // const navigate = useNavigate()
-  // const location = useLocation()
-
-  // const {food1, foods2} = location.state
-
-  const {food1, foods2} = props;
-
-
-  const handleClick = (i) => {
-    // navigate('/second', {state: {food1: food1, foods2: foods2}})
-  }
+  const {food1} = props;
   return (
     <Box sx={{width: '100%', boxSizing: 'border-box'}}>
       <Stack alignItems='center'>
@@ -32,7 +20,6 @@ export default function FoodInfoPage(props){
           <Typography sx={{color: 'white'}}>次へ</Typography>
         </Fab>
       </Stack>
-
     </Box>
   );
 }
