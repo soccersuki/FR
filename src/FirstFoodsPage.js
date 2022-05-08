@@ -2,11 +2,6 @@ import Page from './Page'
 import FoodsPage from './FoodsPage'
 import SetMealTwoToneIcon from '@mui/icons-material/SetMealTwoTone';
 
-const eI = [1600 / 3, 2250 / 3]
-const pI = [0.15, 0.25]
-const fI = [0.15, 0.25]
-const cI = [0.50, 0.60]
-
 
 export default function FirstFoodsPage(props) {
   const {foods} = props;
@@ -17,10 +12,10 @@ export default function FirstFoodsPage(props) {
     const foods2 = foods.filter((food) => {
       const [,,,e2, f2, c2, p2] = food
 
-      var ok = e + e2 > eI[0] && e + e2 < eI[1]
-      ok = ok && p + p2 > (e + e2) * pI[0] / 4 && p + p2 < (e + e2) * pI[1] / 4
-      ok = ok && f + f2 > (e + e2) * fI[0] / 9 && f + f2 < (e + e2) * fI[1] / 9
-      ok = ok && c + c2 > (e + e2) * cI[0] / 4 && c + c2 < (e + e2) * cI[1] / 4
+      var ok = e + e2 > props.goal.e * 0.8 && e + e2 < props.goal.e * 1.2
+      ok = ok && p + p2 > (e + e2) * props.goal.pfc[0] / 100 * 0.8 / 4 && p + p2 < (e + e2) * props.goal.pfc[0] / 100 * 1.2 / 4
+      ok = ok && f + f2 > (e + e2) * props.goal.pfc[1] / 100 * 0.8 / 9 && f + f2 < (e + e2) * props.goal.pfc[1] / 100 * 1.2 / 9
+      ok = ok && c + c2 > (e + e2) * props.goal.pfc[2] / 100 * 0.8 / 4 && c + c2 < (e + e2) * props.goal.pfc[2] / 100 * 1.2 / 4
 
       return ok
     })
@@ -35,7 +30,7 @@ export default function FirstFoodsPage(props) {
 
   return(
     <Page text={'一品目を選んでください'} icon={<SetMealTwoToneIcon sx={{fontSize: 70}} color="secondary"/>}>
-      <FoodsPage foods={props.foods1} handleClickNext={handleClickNext}/>
+      <FoodsPage foods={props.foods1} goal={props.goal} handleClickNext={handleClickNext}/>
     </Page>
   )
 }

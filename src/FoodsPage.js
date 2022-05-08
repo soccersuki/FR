@@ -61,7 +61,7 @@ export default function FoodsPage(props){
         onOpen={toggleDrawer(true)}
       >
         <Box sx={{ width: '100%'}} onClick={toggleDrawer(false)}>
-          <FoodInfoPage food1={foods[id]} handleClick={handleClickNext}/>
+          <FoodInfoPage food1={foods[id]} goal={props.goal} handleClick={handleClickNext}/>
         </Box>
       </SwipeableDrawer>
       <Buttons handleClick1={handleClickRandom} handleClick2={handleClickSort}/>

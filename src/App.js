@@ -20,7 +20,7 @@ const theme = createTheme({
   palette: {
     secondary: {
       main: pink[200],
-      contrastText: '#fff'
+      contrastText: '#fff',
     }
   },
   typography: {
@@ -59,18 +59,19 @@ export default function App() {
   const [food2, setFood2] = useState(null);
   const [foods1, setFoods1] = useState([]);
   const [foods2, setFoods2] = useState([]);
+  const [goal, setGoal] = useState(null);
 
   const handleClick = () => {
     setId(id + 1);
   }
 
   const pages = [
-    <GoalPage handleClick={handleClick}/>,
+    <GoalPage handleClick={handleClick} setGoal={setGoal}/>,
     <StoresPage handleClick={handleClick}/>,
     <CategoriesPage foods={foods} setFoods1={setFoods1} handleClick={handleClick}/>,
-    <FirstFoodsPage foods={foods} foods1={foods1} setFood1={setFood1} setFoods2={setFoods2} handleClick={handleClick}/>,
-    <SecondFoodsPage foods2={foods2} setFood2={setFood2} handleClick={handleClick}/>,
-    <ResultPage food1={food1} food2={food2} handleClick={handleClick}/>,
+    <FirstFoodsPage foods={foods} foods1={foods1} setFood1={setFood1} setFoods2={setFoods2} goal={goal} handleClick={handleClick}/>,
+    <SecondFoodsPage foods2={foods2} setFood2={setFood2} goal={goal} handleClick={handleClick}/>,
+    <ResultPage food1={food1} food2={food2} goal={goal} handleClick={handleClick}/>,
   ];
 
   return (

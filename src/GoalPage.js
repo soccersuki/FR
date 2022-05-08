@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {Box, Stack, Typography, Button, Fab, Divider} from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBowlFood, faDrumstickBite, faBottleDroplet, faDumbbell, faWeightScale} from '@fortawesome/free-solid-svg-icons'
+import { faBowlFood, faDrumstickBite, faBottleDroplet, faHeartPulse, faDumbbell, faWeightScale} from '@fortawesome/free-solid-svg-icons'
 import RocketLaunchTwoToneIcon from '@mui/icons-material/RocketLaunchTwoTone';
 import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
 
@@ -13,31 +13,35 @@ export default function GoalPage(props){
   const handleClick = (id) => {
     setId(id);
   }
+  const handleClickNext = () => {
+    props.setGoal(options[id]);
+    props.handleClick();
+  }
 
   const options = [
     {
-      text: 'ダイエット',
-      icon: faWeightScale,
+      text: '健康維持',
+      icon: faHeartPulse,
       e: 800,
       pfc: [15, 25, 60],
     },
     {
       text: '筋トレ',
       icon: faDumbbell,
-      e: 600,
-      pfc: [20, 20, 60],
+      e: 1000,
+      pfc: [30, 20, 50],
     },
     {
-      text: '特になし',
-      icon: null,
-      e: 900,
-      pfc: [30, 20, 50],
+      text: 'ダイエット',
+      icon: faWeightScale,
+      e: 600,
+      pfc: [20, 20, 60],
     },
   ]
 
 
   return(
-    <Page text={'あなたの目標は?'} icon={<RocketLaunchTwoToneIcon sx={{fontSize: 70}} color="secondary"/>} handleClick={props.handleClick}>
+    <Page text={'あなたの目標は?'} icon={<RocketLaunchTwoToneIcon sx={{fontSize: 70}} color="secondary"/>} handleClick={handleClickNext}>
       <Stack spacing={3} justifyContent='center' alignItems="center" sx={{mt: 5, width:'100%'}}>
         {options.map((option, i) => {
           return(
@@ -74,17 +78,17 @@ function Pfc(props){
     {
       name: 'たんぱく質',
       icon: faDrumstickBite,
-      color: '#82b1ff',
+      color: '#FFBB28',
     },
     {
       name: '脂質',
       icon: faBowlFood,
-      color: '#ff8a80',
+      color: '#00C49F',
     },
     {
       name: '炭水化物',
       icon: faBottleDroplet,
-      color: '#74b2a4',
+      color: '#0088FE',
     },
   ]
 

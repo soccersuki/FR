@@ -27,13 +27,13 @@ export default function ProgressMobileStepper(props) {
       activeStep={props.activeStep}
       sx={{ maxWidth: 400, flexGrow: 1 }}
       nextButton={
-        <Button color="secondary"size="small" onClick={handleNext} disabled={props.activeStep === 5}>
+        <Button color="secondary"size="small" onClick={handleNext} disabled={[0, 1, 2, 3, 4, 5].includes(props.activeStep)}>
           Next
           <KeyboardArrowRight />
         </Button>
       }
       backButton={
-        <Button color="secondary"size="small" onClick={handleBack} disabled={props.activeStep === 0}>
+        <Button color="secondary"size="small" onClick={handleBack}>
           <KeyboardArrowLeft />
           Back
         </Button>

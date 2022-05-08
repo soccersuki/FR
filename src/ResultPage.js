@@ -42,7 +42,7 @@ export default function ResultPage(props){
           ))}
         </Stack>
         <Box sx={{width: '30%', mt: 3}}><MyPieChart food={sum}/></Box>
-        <Box sx={{mt: 3}}><DirectionStack food={sum}/></Box>
+        <Box sx={{mt: 3}}><DirectionStack food={sum} goal={props.goal}/></Box>
       </Stack>
       <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
         <Fab color='secondary' variant='extended' onClick={handleClick} sx={{width: '80%'}}>

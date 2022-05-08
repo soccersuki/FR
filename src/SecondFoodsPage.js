@@ -11,7 +11,7 @@ export default function SecondFoodsPage(props){
   }
   return(
     <Page text={'二品目を選んでください'} icon={<LocalFireDepartmentIcon sx={{fontSize: 70}} color="secondary"/>}>
-      <FoodsPage foods={props.foods2} handleClickNext={handleClickNext}/>
+      <FoodsPage foods={props.foods2} goal={props.goal} handleClickNext={handleClickNext}/>
     </Page>
   )
 }
