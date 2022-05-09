@@ -7,6 +7,9 @@ import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartm
 
 import Page from './Page'
 
+import foodsRaw from './foods_lawson.json'
+
+
 
 export default function GoalPage(props){
   const [id, setId] = useState(0);
@@ -16,9 +19,9 @@ export default function GoalPage(props){
   const handleClickNext = () => {
     props.setGoal(options[id]);
 
-    const foods = props.foods.filter(food => {
+    const foods = foodsRaw.filter(food => {
       const [,,,e, f, c, p] = food;
-      for(var food2 of props.foods){
+      for(var food2 of foodsRaw){
         const [,,,e2, f2, c2, p2] = food2
         var ok = e + e2 > options[id].e * 0.8 && e + e2 < options[id].e * 1.2
         ok = ok && p + p2 > (e + e2) * options[id].pfc[0] / 100 * 0.8 / 4 && p + p2 < (e + e2) * options[id].pfc[0] / 100 * 1.2 / 4
@@ -30,8 +33,6 @@ export default function GoalPage(props){
       return false
     });
     props.setFoods(foods);
-
-
     props.handleClick();
   }
 

@@ -37,7 +37,7 @@ export default function App() {
   const [foods1, setFoods1] = useState([]);
   const [foods2, setFoods2] = useState([]);
   const [goal, setGoal] = useState(null);
-  const [foods, setFoods] = useState(foodsRaw);
+  const [foods, setFoods] = useState(null);
 
   const handleClick = () => {
     setId(id + 1);
