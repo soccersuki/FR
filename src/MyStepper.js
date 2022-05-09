@@ -13,9 +13,9 @@ import {Typography} from '@mui/material'
 
 
 const steps = [
-  '目標を設定',
-  '一品目を選ぶ',
-  '二品目を選ぶ',
+  'カロリーとPFCバランスを設定',
+  '一品目は好きな食べ物を選びます',
+  '提案された二品目を選んで完成!',
 ];
 
 const icons = [
