@@ -51,12 +51,12 @@ export default function App() {
     <CategoriesPage setFoods={setFoods} goal={goal} store={store} setFoods1={setFoods1} handleClick={handleClick}/>,
     <FirstFoodsPage foods={foods} foods1={foods1} setFood1={setFood1} setFoods2={setFoods2} goal={goal} handleClick={handleClick}/>,
     <SecondFoodsPage foods2={foods2} setFood2={setFood2} goal={goal} handleClick={handleClick}/>,
-    <ResultPage food1={food1} food2={food2} goal={goal} handleClick={handleClick}/>,
+    <ResultPage food1={food1} food2={food2} goal={goal}handleClick={() => setId(0)}/>,
   ];
 
   return (
     <ThemeProvider theme={theme}>
-      {id == -1 ?
+      {id === -1 ?
         <TopPage handleClick={handleClick}/>
         :
         <>

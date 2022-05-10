@@ -1,4 +1,3 @@
-import {useNavigate, useLocation} from 'react-router-dom'
 import {Box, Typography, Stack, Fab, IconButton, } from '@mui/material'
 import DirectionStack from '../Components/DirectionStack'
 import MyPieChart from '../Components/MyPieChart'

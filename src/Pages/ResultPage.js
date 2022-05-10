@@ -7,13 +7,8 @@ import LooksOneTwoToneIcon from '@mui/icons-material/LooksOneTwoTone';
 import LooksTwoTwoToneIcon from '@mui/icons-material/LooksTwoTwoTone';
 
 export default function ResultPage(props){
-
   const {food1, food2} = props;
-
   const sum = ['合計', null, null, food1[3] + food2[3], food1[4] + food2[4], food1[5] + food2[5], food1[6] + food2[6]]
-
-  const handleClick = () => {}
-
   const result = [
     {
       food: food1,
@@ -41,8 +36,8 @@ export default function ResultPage(props){
         <Box sx={{mt: 3}}><DirectionStack food={sum} goal={props.goal}/></Box>
       </Stack>
       <Box sx={{width: '100%', textAlign: 'center', position: 'fixed', bottom: 20}}>
-        <Fab color='secondary' variant='extended' onClick={handleClick} sx={{width: '80%'}}>
-          <Typography sx={{color: 'white'}}>次へ</Typography>
+        <Fab color='secondary' variant='extended' onClick={props.handleClick} sx={{width: '80%'}}>
+          <Typography sx={{color: 'white'}}>はじめから</Typography>
         </Fab>
       </Box>
     </Box>

@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack';
-import {Box, Typography, Chip, Divider, Paper} from '@mui/material'
+import {Box, Typography, Divider, Paper} from '@mui/material'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBowlFood, faDrumstickBite, faBottleDroplet} from '@fortawesome/free-solid-svg-icons'
