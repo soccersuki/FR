@@ -7,9 +7,6 @@ import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartm
 
 import Page from './Page'
 
-import foodsRaw from './foods_lawson.json'
-
-
 
 export default function GoalPage(props){
   const [id, setId] = useState(0);
@@ -18,21 +15,6 @@ export default function GoalPage(props){
   }
   const handleClickNext = () => {
     props.setGoal(options[id]);
-
-    const foods = foodsRaw.filter(food => {
-      const [,,,e, f, c, p] = food;
-      for(var food2 of foodsRaw){
-        const [,,,e2, f2, c2, p2] = food2
-        var ok = e + e2 > options[id].e * 0.8 && e + e2 < options[id].e * 1.2
-        ok = ok && p + p2 > (e + e2) * options[id].pfc[0] / 100 * 0.8 / 4 && p + p2 < (e + e2) * options[id].pfc[0] / 100 * 1.2 / 4
-        ok = ok && f + f2 > (e + e2) * options[id].pfc[1] / 100 * 0.8 / 9 && f + f2 < (e + e2) * options[id].pfc[1] / 100 * 1.2 / 9
-        ok = ok && c + c2 > (e + e2) * options[id].pfc[2] / 100 * 0.8 / 4 && c + c2 < (e + e2) * options[id].pfc[2] / 100 * 1.2 / 4
-
-        if(ok) return true
-      }
-      return false
-    });
-    props.setFoods(foods);
     props.handleClick();
   }
 
@@ -64,9 +46,9 @@ export default function GoalPage(props){
         {options.map((option, i) => {
           return(
             <Button onClick={() => handleClick(i)} variant={i == id ? 'contained' : 'outlined'} color='secondary' sx={{borderRadius: 10, width: '80%', height: 60}}>
-              <Stack direction="row" alignItems="center" spacing={1}>
-              <FontAwesomeIcon icon={option.icon} fontSize={18}/>
-              <b>{option.text}</b>
+              <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} sx={{width: '100%'}}>
+                <FontAwesomeIcon icon={option.icon} fontSize={i == id ? 30 : 18}/>
+                <b>{option.text}</b>
               </Stack>
             </Button>
           )

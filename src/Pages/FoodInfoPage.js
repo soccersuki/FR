@@ -1,7 +1,7 @@
 import {useNavigate, useLocation} from 'react-router-dom'
 import {Box, Typography, Stack, Fab, IconButton, } from '@mui/material'
-import DirectionStack from './DirectionStack'
-import MyPieChart from './MyPieChart'
+import DirectionStack from '../Components/DirectionStack'
+import MyPieChart from '../Components/MyPieChart'
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 

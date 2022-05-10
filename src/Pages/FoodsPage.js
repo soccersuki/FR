@@ -1,17 +1,21 @@
 import {useState} from 'react'
-import {Box, Typography, Stack, Paper} from '@mui/material'
-import FoodList from './FoodList'
+// import FoodList from './FoodList'
 
 import Page from './Page'
 
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import SortIcon from '@mui/icons-material/Sort';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
+
 import { grey, pink } from '@mui/material/colors';
 
 
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 import FoodInfoPage from './FoodInfoPage'
+import {Box, Typography, Stack, Paper, List, ListItem, ListItemText, ListItemAvatar, IconButton, Avatar} from '@mui/material';
+
 
 
 export default function FoodsPage(props){
@@ -94,5 +98,40 @@ function Buttons(props) {
         </Paper>
       </Stack>
     </Stack>
+  );
+}
+
+
+function FoodList(props) {
+  return (
+    <>
+      <List sx={{ width: '100%', maxWidth: 500}}>
+        {props.foods?.slice(0, 20).map((food, i) => {
+          return(
+            <ListItem onClick={() => props.handleClick(i)}
+              secondaryAction={
+                <IconButton edge="end">
+                  <ArrowForwardIosIcon />
+                </IconButton>
+              }
+              divider
+              disablePadding
+              disableGutters
+            >
+              <ListItemAvatar>
+                <Avatar sx={{ bgcolor: pink[200], }}>
+                  <LocalFireDepartmentTwoToneIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                disableTypography
+                primary={<Typography noWrap>{food[0]}</Typography>}
+                secondary={<Typography fontSize={13}>{`${food[3]}kcal`}</Typography>}
+              />
+            </ListItem>
+          )
+        })}
+      </List>
+    </>
   );
 }

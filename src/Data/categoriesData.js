@@ -25,42 +25,52 @@ const categoriesData = [
   {
     text: 'おにぎり',
     icon: faFutbol,
+    queries: ['おにぎり'],
   },
   {
     text: '寿司',
     icon: faFishFins,
+    queries: ['寿司'],
   },
   {
     text: '丼もの',
     icon: faBowlFood,
+    queries: ['丼'],
   },
   {
     text: 'ステーキ',
     icon: faCow,
+    queries: ['ステーキ'],
   },
   {
     text: 'ラーメン',
     icon: faDragon,
+    queries: ['ラーメン'],
   },
   {
     text: 'カレー',
     icon: faMosque,
+    queries: ['カレー'],
   },
   {
     text: '中華',
     icon: faStar,
+    queries: ['中華'],
   },
   {
     text: 'パン',
     icon: faBreadSlice,
+    queries: ['パン'],
   },
   {
     text: 'サラダ',
     icon: faSeedling,
+    queries: ['サラダ'],
   },
   {
     text: 'たんぱく質多め',
     icon: faP,
+    queries: ['サラダチキン']
   },
 ]
 
